@@ -172,7 +172,9 @@ const upload = multer({
   }
 });
 
-app.get('/api/health', async (req, res) => {
+const router = express.Router();
+
+router.get('/health', async (req, res) => {
   try {
     const connected = await testConnection();
     if (connected) res.json({ status: 'ok', database: 'supabase', timestamp: new Date().toISOString() });
@@ -182,7 +184,7 @@ app.get('/api/health', async (req, res) => {
   }
 });
 
-app.get('/api/project-translations', async (req, res) => {
+router.get('/project-translations', async (req, res) => {
   try {
     const json = await loadProjectI18nStorage();
     res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=600');
@@ -192,7 +194,7 @@ app.get('/api/project-translations', async (req, res) => {
   }
 });
 
-app.post('/api/admin/login', async (req, res) => {
+router.post('/admin/login', async (req, res) => {
   try {
     const { username, password } = req.body || {};
     if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
@@ -208,7 +210,7 @@ app.post('/api/admin/login', async (req, res) => {
   }
 });
 
-app.get('/api/categories', async (req, res) => {
+router.get('/categories', async (req, res) => {
   try {
     const { data: categories, error } = await supabaseAdmin
       .from('categories')
@@ -222,7 +224,7 @@ app.get('/api/categories', async (req, res) => {
   }
 });
 
-app.post('/api/categories', requireAdmin, async (req, res) => {
+router.post('/categories', requireAdmin, async (req, res) => {
   try {
     const { name } = req.body || {};
     if (!name) return res.status(400).json({ error: 'Category name required' });
@@ -241,7 +243,7 @@ app.post('/api/categories', requireAdmin, async (req, res) => {
   }
 });
 
-app.get('/api/projects', async (req, res) => {
+router.get('/projects', async (req, res) => {
   try {
     const { data: projects, error } = await supabaseAdmin
       .from('projects')
@@ -281,7 +283,7 @@ app.get('/api/projects', async (req, res) => {
   }
 });
 
-app.get('/api/projects/:id', async (req, res) => {
+router.get('/projects/:id', async (req, res) => {
   try {
     const { data: project, error } = await supabaseAdmin
       .from('projects')
@@ -306,7 +308,7 @@ app.get('/api/projects/:id', async (req, res) => {
   }
 });
 
-app.post('/api/projects', requireAdmin, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'gallery_images', maxCount: 5 }]), async (req, res) => {
+router.post('/projects', requireAdmin, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'gallery_images', maxCount: 5 }]), async (req, res) => {
   try {
     const { title, category, description, problem, solution, technologies, project_url, github_url, title_i18n, description_i18n, problem_i18n, solution_i18n } = req.body || {};
 
@@ -380,7 +382,7 @@ app.post('/api/projects', requireAdmin, upload.fields([{ name: 'image', maxCount
   }
 });
 
-app.put('/api/projects/:id', requireAdmin, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'gallery_images', maxCount: 5 }]), async (req, res) => {
+router.put('/projects/:id', requireAdmin, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'gallery_images', maxCount: 5 }]), async (req, res) => {
   try {
     const projectId = req.params.id;
     const { title, category, description, problem, solution, technologies, project_url, github_url, title_i18n, description_i18n, problem_i18n, solution_i18n } = req.body || {};
@@ -439,7 +441,7 @@ app.put('/api/projects/:id', requireAdmin, upload.fields([{ name: 'image', maxCo
   }
 });
 
-app.delete('/api/projects/:id', requireAdmin, async (req, res) => {
+router.delete('/projects/:id', requireAdmin, async (req, res) => {
   try {
     const { error } = await supabaseAdmin
       .from('projects')
@@ -452,7 +454,7 @@ app.delete('/api/projects/:id', requireAdmin, async (req, res) => {
   }
 });
 
-app.post('/api/projects/:id/images', requireAdmin, upload.array('images', 10), async (req, res) => {
+router.post('/projects/:id/images', requireAdmin, upload.array('images', 10), async (req, res) => {
   try {
     const projectId = req.params.id;
 
@@ -485,7 +487,7 @@ app.post('/api/projects/:id/images', requireAdmin, upload.array('images', 10), a
   }
 });
 
-app.delete('/api/projects/:projectId/images/:imageId', requireAdmin, async (req, res) => {
+router.delete('/projects/:projectId/images/:imageId', requireAdmin, async (req, res) => {
   try {
     const { error } = await supabaseAdmin
       .from('project_images')
@@ -497,5 +499,8 @@ app.delete('/api/projects/:projectId/images/:imageId', requireAdmin, async (req,
     res.status(500).json({ error: err.message });
   }
 });
+
+app.use('/', router);
+app.use('/api', router);
 
 export const handler = serverless(app);
