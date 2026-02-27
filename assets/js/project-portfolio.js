@@ -73,6 +73,31 @@ const pickProjectText = (project, field, fallback) => {
   return fallback;
 };
 
+function getProjectGalleryUrls(project) {
+  const urls = [];
+
+  const main = project?.image_url;
+  if (typeof main === 'string' && main.trim()) urls.push(main.trim());
+
+  const images = project?.images;
+  if (Array.isArray(images)) {
+    for (const img of images) {
+      const url = img?.image_url;
+      if (typeof url === 'string' && url.trim()) urls.push(url.trim());
+    }
+  }
+
+  const seen = new Set();
+  const unique = [];
+  for (const url of urls) {
+    if (seen.has(url)) continue;
+    seen.add(url);
+    unique.push(url);
+  }
+
+  return unique;
+}
+
 async function ensureProjectI18nLoaded() {
   if (projectI18n) return;
   try {
@@ -484,13 +509,13 @@ function showProjectGallery(project) {
  * Create project detail modal
  */
 function createProjectModal(project) {
-  const images = project.images || [];
-  const mainImage = project.image_url || (images.length > 0 ? images[0].image_url : '');
+  const galleryUrls = getProjectGalleryUrls(project);
+  const mainImage = galleryUrls[0] || './assets/images/project-1.jpg';
 
   const modal = document.createElement('div');
   modal.className = 'project-modal-overlay';
   
-  const gallery = images.length > 0 ? images.map(img => img.image_url) : [mainImage];
+  const gallery = galleryUrls.length ? galleryUrls : [mainImage];
 
   const title = pickProjectText(project, 'title', tt('portfolio.projectAlt', 'Project'));
   const description = pickProjectText(project, 'description', '');
@@ -511,7 +536,7 @@ function createProjectModal(project) {
         <div class="gallery-section">
           <div class="gallery-viewer">
             <div class="gallery-main">
-              <img id="mainImage" src="${escapeHtml(gallery[0] || mainImage)}" alt="${escapeHtml(project.title || 'Project')}">
+              <img id="mainImage" src="${escapeHtml(gallery[0] || mainImage)}" alt="${escapeHtml(title || 'Project')}" onerror="this.src='./assets/images/project-1.jpg'">
               ${gallery.length > 1 ? '<span class="gallery-counter"><span id="currentImage">1</span> / <span id="totalImages">' + gallery.length + '</span></span>' : ''}
             </div>
 
@@ -600,7 +625,13 @@ function setupGalleryNavigation(modal, images) {
     return;
   }
 
-  const gallery = images.map(img => img.image_url).filter(Boolean);
+  const gallery = images
+    .map((img) => {
+      if (typeof img === 'string') return img;
+      return img?.image_url;
+    })
+    .filter((v) => typeof v === 'string' && v.trim())
+    .map((v) => v.trim());
   if (gallery.length === 0) return;
   
   let currentIndex = 0;

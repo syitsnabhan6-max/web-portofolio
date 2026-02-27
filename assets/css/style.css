@@ -2576,6 +2576,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   border-radius: 12px;
   overflow: hidden;
   aspect-ratio: 16 / 10;
+  min-height: 220px;
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
@@ -2858,6 +2859,7 @@ textarea.form-input::-webkit-resizer { display: none; }
   .gallery-main {
     max-height: 250px;
     aspect-ratio: 4 / 3;
+    min-height: 200px;
   }
 
   .gallery-thumbnails {
