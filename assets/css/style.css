@@ -2849,17 +2849,22 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .modal-content {
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
   }
 
   .project-details {
     overflow: visible;
     padding-right: 0;
+    max-height: none;
   }
 
   .gallery-main {
-    max-height: 250px;
-    aspect-ratio: 4 / 3;
-    min-height: 200px;
+    height: 220px;
+    max-height: none;
+    aspect-ratio: auto;
+    min-height: 220px;
   }
 
   .gallery-thumbnails {
