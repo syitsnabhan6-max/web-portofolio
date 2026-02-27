@@ -13,7 +13,7 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
 const SUPABASE_SERVICE_ROLE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-const STORAGE_BUCKET = process.env.SUPABASE_STORAGE_BUCKET || 'portfolio-images';
+const STORAGE_BUCKET = process.env.SUPABASE_STORAGE_BUCKET || 'portofolio-images';
 const PROJECT_I18N_OBJECT_PATH = process.env.PROJECT_I18N_OBJECT_PATH || 'meta/projects.json';
 const PROJECT_I18N_LANGS = ['en', 'id', 'zh', 'ja', 'fr', 'ru', 'es'];
 
