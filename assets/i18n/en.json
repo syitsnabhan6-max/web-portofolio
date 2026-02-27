@@ -1,0 +1,168 @@
+{
+  "lang": {
+    "ariaLabel": "Language"
+  },
+  "sidebar": {
+    "role": "Digital System Builder",
+    "showContacts": "Show Contacts"
+  },
+  "nav": {
+    "about": "About",
+    "resume": "Resume",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Contact",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "birthdayLabel": "Birthday",
+    "locationLabel": "Location",
+    "form": {
+      "title": "Contact Form",
+      "fullName": "Full name",
+      "email": "Email address",
+      "message": "Your Message",
+      "send": "Send Message"
+    }
+  },
+  "about": {
+    "title": "About me",
+    "p1": "I am a digital designer and system-oriented builder who focuses on creating clean, structured, and functional digital experiences. I don’t just design visuals — I build with clarity and purpose.",
+    "p2": "I approach every project with structure first, aesthetics second. For me, design is not only about how it looks, but how it works. I enjoy improving systems, refining layouts, and making digital experiences more efficient and intentional.",
+    "p3": "Currently, I am expanding from visual design into web structuring and database integration. Alongside my creative work, I am continuing my education through a homeschooling program while gaining professional experience in an export-import company. My goal is to combine creativity with logic — building digital work that is visually strong, technically organized, and scalable.",
+    "servicesTitle": "What I'm doing",
+    "services": {
+      "webDev": {
+        "title": "Web Development",
+        "text": "I build responsive websites with clean layout structure and user-focused design. I continuously improve feature integration and experiment with basic database functionality to create more dynamic and scalable digital systems."
+      },
+      "visualDesign": {
+        "title": "Visual Design",
+        "text": "I create concept-driven posters, branding visuals, and promotional materials. My work focuses on composition balance, clarity, and emotional impact."
+      },
+      "systemImprovement": {
+        "title": "System Improvement",
+        "text": "I refine and optimize digital projects by restructuring layouts, improving UI flow, and enhancing functional efficiency."
+      }
+    }
+  },
+  "resume": {
+    "title": "Resume",
+    "summaryTitle": "Professional Summary",
+    "summaryText": "A young digital designer with a structured mindset and strong interest in system-based development. Experienced in building responsive websites, visual branding materials, and improving digital workflows. Currently balancing homeschooling education with professional experience in an export-import company, while continuously evolving from creative execution into scalable digital solutions.",
+    "educationTitle": "Education",
+    "experienceTitle": "Experience",
+    "skillsTitle": "My skills",
+    "technicalSkillsTitle": "Technical Skills",
+    "creativeSkillsTitle": "Creative Skills",
+    "softSkillsTitle": "Strategic & Soft Skills",
+    "labels": {
+      "present": "Present",
+      "ongoing": "Ongoing"
+    },
+    "education": {
+      "homeschool": {
+        "title": "Homeschooling Program",
+        "text": "Continuing formal education through a flexible learning system while focusing on independent skill development in digital design and web systems. Currently active with emphasis on creative and technical skill advancement."
+      },
+      "smk": {
+        "title": "SMK NEGERI 2 CILAKU",
+        "text": "Major in Visual Communication Design. Focused on graphic design, illustration, photography, videography, and visual branding. Actively involved in creative school projects and independent design experiments."
+      },
+      "smp": {
+        "title": "SMP ISLAM AL-ROHMAT",
+        "text": "Studied general education while living in a boarding environment. Learned discipline, time management, and teamwork alongside early creative interests."
+      },
+      "sdn": {
+        "title": "SDN SINDANGRAJA 04",
+        "text": "Developed an early interest in art and technology through drawing and basic computer skills."
+      }
+    },
+    "experience": {
+      "export": {
+        "title": "Export & Import Company",
+        "position": "Position: Information Technology",
+        "b1": "Supporting export-import operational workflow and daily operations",
+        "b2": "Handling documentation and coordination tasks with precision",
+        "b3": "Contributing to structured administrative processes and standards",
+        "b4": "Working within a professional business environment",
+        "b5": "Gaining real-world experience in logistics and international trade systems"
+      },
+      "freelance": {
+        "title": "Freelancer Graphic Designer",
+        "text": "Worked on various visual design projects such as posters, social media content, and simple branding materials for local clients and online requests. Learned to manage deadlines, communicate with clients, and maintain design quality."
+      },
+      "school": {
+        "title": "School Creative Project",
+        "text": "Contributed to school design and multimedia needs — including event posters, banners, and short video editing. Gained experience in teamwork and creative problem-solving."
+      },
+      "personal": {
+        "title": "Personal Project",
+        "text": "Exploring 3D animation, web layout design, and experimental visuals. Constantly developing design sense and learning new creative tools through hands-on projects."
+      }
+    },
+    "skills": {
+      "tech": {
+        "html": "• HTML",
+        "css": "• CSS",
+        "js": "• Basic JavaScript",
+        "db": "• Database Integration (Basic)",
+        "ui": "• UI Structuring"
+      },
+      "creative": {
+        "poster": "• Poster Design",
+        "brand": "• Brand Visual Identity",
+        "layout": "• Layout Composition",
+        "concept": "• Concept Development"
+      },
+      "soft": {
+        "problemSolving": "• Problem Solving",
+        "systemThinking": "• System Thinking",
+        "independentLearning": "• Independent Learning",
+        "analytical": "• Analytical Approach",
+        "continuous": "• Continuous Improvement Mindset"
+      }
+    }
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "selectCategory": "Select category",
+    "loading": "Loading projects...",
+    "noProjects": "No projects found.",
+    "loadError": "Failed to load projects: {message}",
+    "projectAlt": "Project",
+    "untitled": "Untitled"
+  },
+  "filters": {
+    "all": "All"
+  },
+  "categories": {
+    "web-development": "Web Development",
+    "mobile-development": "Mobile Development",
+    "graphic-design": "Graphic Design",
+    "photography": "Photography",
+    "videography": "Videography",
+    "ui-ux-design": "UI/UX Design",
+    "branding": "Branding",
+    "illustration": "Illustration",
+    "animation": "Animation",
+    "other": "Other"
+  },
+  "projectModal": {
+    "close": "Close",
+    "previousImage": "Previous image",
+    "nextImage": "Next image",
+    "galleryImageAlt": "Gallery image {n}",
+    "problem": "Problem",
+    "solution": "Solution",
+    "technologies": "Technologies",
+    "viewProject": "View Project",
+    "github": "GitHub"
+  },
+  "clients": {
+    "title": "Collaborations With",
+    "teamMedia": "Team Media",
+    "leadTeamMedia": "Lead Media Team"
+  }
+}

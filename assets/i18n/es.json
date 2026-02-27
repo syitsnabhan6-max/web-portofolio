@@ -1,0 +1,168 @@
+{
+  "lang": {
+    "ariaLabel": "Idioma"
+  },
+  "sidebar": {
+    "role": "Constructor de sistemas digitales",
+    "showContacts": "Mostrar contactos"
+  },
+  "nav": {
+    "about": "Acerca de",
+    "resume": "Resumen",
+    "portfolio": "Portafolio",
+    "contact": "Contacto"
+  },
+  "contact": {
+    "title": "Contacto",
+    "emailLabel": "Email",
+    "phoneLabel": "Teléfono",
+    "birthdayLabel": "Cumpleaños",
+    "locationLabel": "Ubicación",
+    "form": {
+      "title": "Formulario de contacto",
+      "fullName": "Nombre completo",
+      "email": "Correo electrónico",
+      "message": "Tu mensaje",
+      "send": "Enviar mensaje"
+    }
+  },
+  "about": {
+    "title": "Sobre mí",
+    "p1": "Soy un diseñador digital y constructor orientado a sistemas, enfocado en crear experiencias digitales limpias, estructuradas y funcionales. No solo diseño lo visual: construyo con claridad y propósito.",
+    "p2": "En cada proyecto priorizo primero la estructura y luego la estética. Para mí, el diseño no es solo cómo se ve, sino cómo funciona. Disfruto mejorar sistemas, refinar layouts y hacer las experiencias digitales más eficientes e intencionales.",
+    "p3": "Actualmente estoy expandiéndome del diseño visual hacia la estructuración web y la integración de bases de datos. Además de mi trabajo creativo, continúo mi educación mediante homeschooling mientras gano experiencia profesional en una empresa de exportación e importación. Mi objetivo es combinar creatividad y lógica para construir trabajos digitales sólidos, técnicamente organizados y escalables.",
+    "servicesTitle": "Lo que hago",
+    "services": {
+      "webDev": {
+        "title": "Desarrollo web",
+        "text": "Construyo sitios web responsivos con una estructura limpia y un diseño centrado en el usuario. Mejoro continuamente la integración de funciones y experimento con bases de datos básicas para crear sistemas más dinámicos y escalables."
+      },
+      "visualDesign": {
+        "title": "Diseño visual",
+        "text": "Creo pósters basados en conceptos, visuales de marca y materiales promocionales. Mi trabajo se enfoca en el equilibrio de composición, claridad e impacto emocional."
+      },
+      "systemImprovement": {
+        "title": "Mejora de sistemas",
+        "text": "Refino y optimizo proyectos digitales reestructurando layouts, mejorando el flujo de UI y aumentando la eficiencia funcional."
+      }
+    }
+  },
+  "resume": {
+    "title": "Resumen",
+    "summaryTitle": "Resumen profesional",
+    "summaryText": "Joven diseñador digital con mentalidad estructurada y gran interés en el desarrollo basado en sistemas. Experiencia construyendo sitios web responsivos, materiales de branding visual y mejorando flujos de trabajo digitales. Actualmente equilibra la educación homeschooling con experiencia profesional en una empresa de exportación e importación, evolucionando hacia soluciones digitales escalables.",
+    "educationTitle": "Educación",
+    "experienceTitle": "Experiencia",
+    "skillsTitle": "Mis habilidades",
+    "technicalSkillsTitle": "Habilidades técnicas",
+    "creativeSkillsTitle": "Habilidades creativas",
+    "softSkillsTitle": "Habilidades estratégicas y blandas",
+    "labels": {
+      "present": "Presente",
+      "ongoing": "En curso"
+    },
+    "education": {
+      "homeschool": {
+        "title": "Programa de homeschooling",
+        "text": "Continuo la educación formal mediante un sistema de aprendizaje flexible, enfocándome en el desarrollo autónomo de habilidades en diseño digital y sistemas web. Actualmente activo, con énfasis en el crecimiento creativo y técnico."
+      },
+      "smk": {
+        "title": "SMK NEGERI 2 CILAKU",
+        "text": "Especialidad en Diseño de Comunicación Visual. Enfoque en diseño gráfico, ilustración, fotografía, videografía y branding visual. Participación activa en proyectos creativos escolares y experimentos de diseño independientes."
+      },
+      "smp": {
+        "title": "SMP ISLAM AL-ROHMAT",
+        "text": "Estudios generales en un entorno de internado. Aprendí disciplina, gestión del tiempo y trabajo en equipo junto con intereses creativos tempranos."
+      },
+      "sdn": {
+        "title": "SDN SINDANGRAJA 04",
+        "text": "Desarrollé un interés temprano por el arte y la tecnología mediante el dibujo y habilidades informáticas básicas."
+      }
+    },
+    "experience": {
+      "export": {
+        "title": "Empresa de exportación e importación",
+        "position": "Puesto: Tecnologías de la información",
+        "b1": "Apoyo al flujo operativo de exportación-importación y a las operaciones diarias",
+        "b2": "Gestión precisa de documentación y tareas de coordinación",
+        "b3": "Contribución a procesos administrativos estructurados y estándares",
+        "b4": "Trabajo en un entorno empresarial profesional",
+        "b5": "Experiencia real en logística y sistemas de comercio internacional"
+      },
+      "freelance": {
+        "title": "Diseñador gráfico freelance",
+        "text": "Trabajé en proyectos de diseño visual como pósters, contenido para redes sociales y materiales de branding simple para clientes locales y solicitudes online. Aprendí a gestionar plazos, comunicarme con clientes y mantener la calidad."
+      },
+      "school": {
+        "title": "Proyecto creativo escolar",
+        "text": "Contribuí a las necesidades de diseño y multimedia de la escuela — incluyendo pósters de eventos, banners y edición de videos cortos. Gané experiencia en trabajo en equipo y resolución creativa de problemas."
+      },
+      "personal": {
+        "title": "Proyecto personal",
+        "text": "Exploro animación 3D, diseño de layouts web y visuales experimentales. Desarrollo continuamente el sentido de diseño y aprendo nuevas herramientas creativas con proyectos prácticos."
+      }
+    },
+    "skills": {
+      "tech": {
+        "html": "• HTML",
+        "css": "• CSS",
+        "js": "• JavaScript básico",
+        "db": "• Integración de base de datos (básico)",
+        "ui": "• Estructuración de UI"
+      },
+      "creative": {
+        "poster": "• Diseño de pósters",
+        "brand": "• Identidad visual de marca",
+        "layout": "• Composición de layout",
+        "concept": "• Desarrollo de concepto"
+      },
+      "soft": {
+        "problemSolving": "• Resolución de problemas",
+        "systemThinking": "• Pensamiento sistémico",
+        "independentLearning": "• Aprendizaje autónomo",
+        "analytical": "• Enfoque analítico",
+        "continuous": "• Mentalidad de mejora continua"
+      }
+    }
+  },
+  "portfolio": {
+    "title": "Portafolio",
+    "selectCategory": "Seleccionar categoría",
+    "loading": "Cargando proyectos...",
+    "noProjects": "No se encontraron proyectos.",
+    "loadError": "No se pudieron cargar los proyectos: {message}",
+    "projectAlt": "Proyecto",
+    "untitled": "Sin título"
+  },
+  "filters": {
+    "all": "Todos"
+  },
+  "categories": {
+    "web-development": "Desarrollo web",
+    "mobile-development": "Desarrollo móvil",
+    "graphic-design": "Diseño gráfico",
+    "photography": "Fotografía",
+    "videography": "Videografía",
+    "ui-ux-design": "Diseño UI/UX",
+    "branding": "Branding",
+    "illustration": "Ilustración",
+    "animation": "Animación",
+    "other": "Otro"
+  },
+  "projectModal": {
+    "close": "Cerrar",
+    "previousImage": "Imagen anterior",
+    "nextImage": "Siguiente imagen",
+    "galleryImageAlt": "Imagen de galería {n}",
+    "problem": "Problema",
+    "solution": "Solución",
+    "technologies": "Tecnologías",
+    "viewProject": "Ver proyecto",
+    "github": "GitHub"
+  },
+  "clients": {
+    "title": "Colaboraciones con",
+    "teamMedia": "Equipo de medios",
+    "leadTeamMedia": "Líder del equipo de medios"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "lang": {
+    "ariaLabel": "Langue"
+  },
+  "sidebar": {
+    "role": "Constructeur de systèmes numériques",
+    "showContacts": "Afficher les contacts"
+  },
+  "nav": {
+    "about": "À propos",
+    "resume": "CV",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Contact",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Téléphone",
+    "birthdayLabel": "Anniversaire",
+    "locationLabel": "Localisation",
+    "form": {
+      "title": "Formulaire de contact",
+      "fullName": "Nom complet",
+      "email": "Adresse e-mail",
+      "message": "Votre message",
+      "send": "Envoyer"
+    }
+  },
+  "about": {
+    "title": "À propos de moi",
+    "p1": "Je suis un designer digital et un constructeur orienté système, focalisé sur des expériences numériques propres, structurées et fonctionnelles. Je ne fais pas que du visuel — je construis avec clarté et intention.",
+    "p2": "Je commence chaque projet par la structure, puis l’esthétique. Pour moi, le design n’est pas seulement une question d’apparence, mais de fonctionnement. J’aime améliorer les systèmes, affiner les mises en page et rendre les expériences numériques plus efficaces.",
+    "p3": "Actuellement, j’élargis mon périmètre du design visuel vers la structuration web et l’intégration de bases de données. En parallèle, je poursuis mes études en homeschooling tout en acquérant une expérience professionnelle dans une entreprise d’export-import. Mon objectif est de combiner créativité et logique — pour des réalisations visuellement fortes, techniquement organisées et évolutives.",
+    "servicesTitle": "Ce que je fais",
+    "services": {
+      "webDev": {
+        "title": "Développement web",
+        "text": "Je crée des sites responsives avec une structure propre et un design centré utilisateur. J’améliore continuellement l’intégration de fonctionnalités et j’explore des bases de données simples pour des systèmes plus dynamiques et évolutifs."
+      },
+      "visualDesign": {
+        "title": "Design visuel",
+        "text": "Je conçois des affiches conceptuelles, des visuels de marque et des supports promotionnels. Je privilégie l’équilibre de composition, la clarté et l’impact émotionnel."
+      },
+      "systemImprovement": {
+        "title": "Amélioration de systèmes",
+        "text": "J’optimise les projets numériques en restructurant les layouts, en améliorant les flux UI et en augmentant l’efficacité fonctionnelle."
+      }
+    }
+  },
+  "resume": {
+    "title": "CV",
+    "summaryTitle": "Résumé professionnel",
+    "summaryText": "Jeune designer digital avec un état d’esprit structuré et un fort intérêt pour le développement orienté système. Expérience en création de sites responsives, supports de branding visuel et optimisation de workflows numériques. Actuellement entre homeschooling et expérience professionnelle en export-import, avec une évolution continue vers des solutions numériques évolutives.",
+    "educationTitle": "Formation",
+    "experienceTitle": "Expérience",
+    "skillsTitle": "Mes compétences",
+    "technicalSkillsTitle": "Compétences techniques",
+    "creativeSkillsTitle": "Compétences créatives",
+    "softSkillsTitle": "Compétences stratégiques & humaines",
+    "labels": {
+      "present": "Présent",
+      "ongoing": "En cours"
+    },
+    "education": {
+      "homeschool": {
+        "title": "Programme de homeschooling",
+        "text": "Poursuite d’une formation formelle via un système d’apprentissage flexible, tout en développant des compétences en design digital et systèmes web. Actuellement actif avec un accent sur la progression créative et technique."
+      },
+      "smk": {
+        "title": "SMK NEGERI 2 CILAKU",
+        "text": "Spécialisation en design de communication visuelle. Axé sur le design graphique, l’illustration, la photographie, la vidéographie et le branding visuel. Participation active à des projets créatifs scolaires et à des expérimentations personnelles."
+      },
+      "smp": {
+        "title": "SMP ISLAM AL-ROHMAT",
+        "text": "Études générales dans un environnement internat. Acquisition de discipline, gestion du temps et travail d’équipe, avec le développement d’intérêts créatifs."
+      },
+      "sdn": {
+        "title": "SDN SINDANGRAJA 04",
+        "text": "Développement d’un intérêt précoce pour l’art et la technologie à travers le dessin et des bases en informatique."
+      }
+    },
+    "experience": {
+      "export": {
+        "title": "Entreprise d’export & import",
+        "position": "Poste : Technologies de l’information",
+        "b1": "Soutien du flux opérationnel export-import et des opérations quotidiennes",
+        "b2": "Gestion rigoureuse de la documentation et des tâches de coordination",
+        "b3": "Contribution à des processus administratifs structurés et à des standards",
+        "b4": "Travail dans un environnement professionnel orienté business",
+        "b5": "Expérience terrain en logistique et systèmes du commerce international"
+      },
+      "freelance": {
+        "title": "Designer graphique freelance",
+        "text": "Réalisation de projets de design visuel (posters, contenu réseaux sociaux, branding simple) pour des clients locaux et des demandes en ligne. Apprentissage de la gestion des délais, de la communication client et du maintien de la qualité."
+      },
+      "school": {
+        "title": "Projet créatif scolaire",
+        "text": "Contribution aux besoins de design et multimédia de l’école — posters d’événements, bannières et montage vidéo court. Expérience en travail d’équipe et résolution créative de problèmes."
+      },
+      "personal": {
+        "title": "Projet personnel",
+        "text": "Exploration de l’animation 3D, de la mise en page web et de visuels expérimentaux. Développement constant du sens du design et apprentissage de nouveaux outils via des projets pratiques."
+      }
+    },
+    "skills": {
+      "tech": {
+        "html": "• HTML",
+        "css": "• CSS",
+        "js": "• JavaScript (bases)",
+        "db": "• Intégration base de données (bases)",
+        "ui": "• Structuration UI"
+      },
+      "creative": {
+        "poster": "• Design d’affiche",
+        "brand": "• Identité visuelle de marque",
+        "layout": "• Composition de layout",
+        "concept": "• Développement de concept"
+      },
+      "soft": {
+        "problemSolving": "• Résolution de problèmes",
+        "systemThinking": "• Pensée systémique",
+        "independentLearning": "• Apprentissage autonome",
+        "analytical": "• Approche analytique",
+        "continuous": "• Amélioration continue"
+      }
+    }
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "selectCategory": "Choisir une catégorie",
+    "loading": "Chargement des projets…",
+    "noProjects": "Aucun projet trouvé.",
+    "loadError": "Impossible de charger les projets : {message}",
+    "projectAlt": "Projet",
+    "untitled": "Sans titre"
+  },
+  "filters": {
+    "all": "Tous"
+  },
+  "categories": {
+    "web-development": "Développement web",
+    "mobile-development": "Développement mobile",
+    "graphic-design": "Design graphique",
+    "photography": "Photographie",
+    "videography": "Vidéographie",
+    "ui-ux-design": "Design UI/UX",
+    "branding": "Branding",
+    "illustration": "Illustration",
+    "animation": "Animation",
+    "other": "Autre"
+  },
+  "projectModal": {
+    "close": "Fermer",
+    "previousImage": "Image précédente",
+    "nextImage": "Image suivante",
+    "galleryImageAlt": "Image {n}",
+    "problem": "Problème",
+    "solution": "Solution",
+    "technologies": "Technologies",
+    "viewProject": "Voir le projet",
+    "github": "GitHub"
+  },
+  "clients": {
+    "title": "Collaborations avec",
+    "teamMedia": "Équipe média",
+    "leadTeamMedia": "Chef d’équipe média"
+  }
+}

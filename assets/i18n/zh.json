@@ -1,0 +1,168 @@
+{
+  "lang": {
+    "ariaLabel": "语言"
+  },
+  "sidebar": {
+    "role": "数字系统构建者",
+    "showContacts": "显示联系方式"
+  },
+  "nav": {
+    "about": "关于",
+    "resume": "简历",
+    "portfolio": "作品集",
+    "contact": "联系"
+  },
+  "contact": {
+    "title": "联系",
+    "emailLabel": "邮箱",
+    "phoneLabel": "电话",
+    "birthdayLabel": "生日",
+    "locationLabel": "地点",
+    "form": {
+      "title": "联系表单",
+      "fullName": "姓名",
+      "email": "邮箱地址",
+      "message": "您的留言",
+      "send": "发送消息"
+    }
+  },
+  "about": {
+    "title": "关于我",
+    "p1": "我是一名数字设计师与系统导向的构建者，专注于打造干净、结构清晰且功能完善的数字体验。我不仅做视觉设计——我更注重以清晰的目标把系统搭建出来。",
+    "p2": "我习惯先做结构，再做美观。对我来说，设计不只是好看，更要好用、好维护。我喜欢优化系统、调整布局，并让数字体验更高效、更有逻辑。",
+    "p3": "目前我正在从视觉设计拓展到网页结构与数据库集成。同时，我通过家庭教育继续学习，并在一家进出口公司积累专业经验。我的目标是把创意与逻辑结合起来——打造视觉强、技术清晰且可扩展的数字作品。",
+    "servicesTitle": "我在做什么",
+    "services": {
+      "webDev": {
+        "title": "网页开发",
+        "text": "我构建响应式网站，注重清晰的布局结构与以用户为中心的设计。我持续完善功能集成，并尝试基础数据库能力，让系统更动态、更可扩展。"
+      },
+      "visualDesign": {
+        "title": "视觉设计",
+        "text": "我制作概念驱动的海报、品牌视觉与推广物料，强调构图平衡、信息清晰与情绪表达。"
+      },
+      "systemImprovement": {
+        "title": "系统优化",
+        "text": "我通过重构布局、优化 UI 流程与提升功能效率来改进数字项目。"
+      }
+    }
+  },
+  "resume": {
+    "title": "简历",
+    "summaryTitle": "专业概述",
+    "summaryText": "年轻的数字设计师，思维结构化，并对系统化开发充满兴趣。具备响应式网站构建、品牌视觉物料制作与数字流程优化经验。目前在家庭教育与进出口公司工作经验之间取得平衡，并持续从创意执行进化为可扩展的数字解决方案。",
+    "educationTitle": "教育经历",
+    "experienceTitle": "工作经历",
+    "skillsTitle": "技能",
+    "technicalSkillsTitle": "技术技能",
+    "creativeSkillsTitle": "创意技能",
+    "softSkillsTitle": "策略与软技能",
+    "labels": {
+      "present": "至今",
+      "ongoing": "进行中"
+    },
+    "education": {
+      "homeschool": {
+        "title": "家庭教育项目",
+        "text": "通过灵活的学习体系继续正规教育，同时专注于数字设计与 Web 系统的自主技能提升。目前持续学习，侧重创意与技术能力的提升。"
+      },
+      "smk": {
+        "title": "SMK NEGERI 2 CILAKU",
+        "text": "专业：视觉传播设计。聚焦平面设计、插画、摄影、视频制作与品牌视觉。积极参与学校创意项目，并进行个人设计实验。"
+      },
+      "smp": {
+        "title": "SMP ISLAM AL-ROHMAT",
+        "text": "在寄宿环境中学习通识课程，同时培养纪律性、时间管理与团队协作，并发展早期的创意兴趣。"
+      },
+      "sdn": {
+        "title": "SDN SINDANGRAJA 04",
+        "text": "通过绘画与基础计算机技能培养了对艺术与科技的早期兴趣。"
+      }
+    },
+    "experience": {
+      "export": {
+        "title": "进出口公司",
+        "position": "职位：信息技术",
+        "b1": "支持进出口业务流程与日常运营",
+        "b2": "高准确度处理文档与协调工作",
+        "b3": "参与规范化的行政流程与标准建设",
+        "b4": "在专业的商业环境中工作",
+        "b5": "获得物流与国际贸易系统的实际经验"
+      },
+      "freelance": {
+        "title": "自由职业平面设计师",
+        "text": "参与多种视觉设计项目，例如海报、社交媒体内容与基础品牌物料，服务本地客户与线上需求。学习管理截止时间、与客户沟通并保持设计质量。"
+      },
+      "school": {
+        "title": "学校创意项目",
+        "text": "为学校的设计与多媒体需求做出贡献——包括活动海报、横幅与短视频剪辑。积累团队协作与创意问题解决经验。"
+      },
+      "personal": {
+        "title": "个人项目",
+        "text": "探索 3D 动画、网页布局设计与实验性视觉，不断提升审美与设计能力，并通过实战项目学习新的创意工具。"
+      }
+    },
+    "skills": {
+      "tech": {
+        "html": "• HTML",
+        "css": "• CSS",
+        "js": "• JavaScript 基础",
+        "db": "• 数据库集成（基础）",
+        "ui": "• UI 结构设计"
+      },
+      "creative": {
+        "poster": "• 海报设计",
+        "brand": "• 品牌视觉识别",
+        "layout": "• 布局构图",
+        "concept": "• 概念开发"
+      },
+      "soft": {
+        "problemSolving": "• 问题解决",
+        "systemThinking": "• 系统思维",
+        "independentLearning": "• 自主学习",
+        "analytical": "• 分析方法",
+        "continuous": "• 持续改进思维"
+      }
+    }
+  },
+  "portfolio": {
+    "title": "作品集",
+    "selectCategory": "选择类别",
+    "loading": "正在加载项目…",
+    "noProjects": "未找到项目。",
+    "loadError": "加载项目失败：{message}",
+    "projectAlt": "项目",
+    "untitled": "未命名"
+  },
+  "filters": {
+    "all": "全部"
+  },
+  "categories": {
+    "web-development": "网页开发",
+    "mobile-development": "移动开发",
+    "graphic-design": "平面设计",
+    "photography": "摄影",
+    "videography": "视频制作",
+    "ui-ux-design": "UI/UX 设计",
+    "branding": "品牌设计",
+    "illustration": "插画",
+    "animation": "动画",
+    "other": "其他"
+  },
+  "projectModal": {
+    "close": "关闭",
+    "previousImage": "上一张",
+    "nextImage": "下一张",
+    "galleryImageAlt": "图库图片 {n}",
+    "problem": "问题",
+    "solution": "解决方案",
+    "technologies": "技术栈",
+    "viewProject": "查看项目",
+    "github": "GitHub"
+  },
+  "clients": {
+    "title": "合作伙伴",
+    "teamMedia": "媒体团队",
+    "leadTeamMedia": "媒体团队负责人"
+  }
+}

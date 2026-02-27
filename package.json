@@ -1,0 +1,25 @@
+{
+  "name": "portfolio-website",
+  "version": "1.0.0",
+  "description": "Professional portfolio website with admin panel",
+  "main": "server-auto.js",
+  "type": "module",
+  "scripts": {
+    "start": "node create-folders.js && node server-auto.js",
+    "dev": "node create-folders.js && node --watch server-auto.js",
+    "start:sqlite": "node create-folders.js && node server.js",
+    "start:supabase": "node create-folders.js && node server-supabase.js",
+    "setup": "node create-folders.js"
+  },
+  "keywords": ["portfolio", "website"],
+  "author": "Syits Nabhan N.F",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5-lts.1",
+    "dotenv": "^16.3.1",
+    "@supabase/supabase-js": "^2.49.1"
+  }
+}

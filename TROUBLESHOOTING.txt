@@ -1,0 +1,655 @@
+🔧 TROUBLESHOOTING GUIDE
+
+═══════════════════════════════════════════════════════════════════════════
+
+Panduan lengkap untuk mengatasi masalah yang mungkin Anda hadapi.
+
+═══════════════════════════════════════════════════════════════════════════
+
+❌ PROBLEM: "Command not found: node"
+
+PENYEBAB:
+  → Node.js tidak installed
+  → Node.js tidak di PATH
+  → Terminal tidak restart setelah install
+
+SOLUSI:
+  1. Download Node.js dari: https://nodejs.org/
+  2. Install dengan default settings
+  3. Close semua terminal/CMD
+  4. Buka terminal baru
+  5. Test: node --version
+  6. Should show: v14.x.x atau lebih tinggi
+
+KALAU MASIH ERROR:
+  → Add Node.js ke PATH manual:
+    1. Windows: Control Panel → Environment Variables
+    2. Tambah C:\Program Files\nodejs ke PATH
+    3. Restart computer
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: "npm install" gagal / dependencies tidak terinstall
+
+PENYEBAB:
+  → Internet connection masalah
+  → npm registry slow
+  → Disk space tidak cukup
+  → Corrupted package cache
+
+SOLUSI CEPAT:
+  1. npm cache clean --force
+  2. npm install
+
+SOLUSI LENGKAP:
+  1. Hapus folder: node_modules
+  2. Hapus file: package-lock.json
+  3. npm cache clean --force
+  4. npm install (tunggu sampai selesai)
+
+KALAU MASIH ERROR:
+  → Coba dengan verbose output:
+    npm install --verbose
+  → Lihat error message yang detail
+  → Google error message tersebut
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Port 3000 already in use
+
+ERROR MESSAGE:
+  "Error: listen EADDRINUSE: address already in use :::3000"
+
+PENYEBAB:
+  → Server lain pakai port 3000
+  → Server lama belum fully close
+  → Multiple node processes running
+
+SOLUSI:
+
+  OPTION 1 - Kill process di port 3000:
+    Windows (Command Prompt):
+      netstat -ano | findstr :3000
+      taskkill /PID [PID_NUMBER] /F
+    
+    Windows (PowerShell):
+      Get-NetTCPConnection -LocalPort 3000 | Stop-Process -Force
+    
+    Mac/Linux:
+      lsof -i :3000
+      kill -9 [PID_NUMBER]
+
+  OPTION 2 - Gunakan port lain:
+    Edit server.js:
+      const PORT = process.env.PORT || 3001;
+    
+    Kemudian akses:
+      http://localhost:3001
+
+  OPTION 3 - Wait and retry:
+    1. Close terminal
+    2. Tunggu 10 detik
+    3. Open terminal baru
+    4. npm start
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: "Module not found" error
+
+ERROR MESSAGE:
+  "Cannot find module 'express'"
+  atau
+  "MODULE_NOT_FOUND"
+
+PENYEBAB:
+  → npm install belum dijalankan
+  → node_modules corrupted
+  → package.json error
+
+SOLUSI:
+  1. Pastikan ada file package.json di folder
+  2. Jalankan: npm install
+  3. Tunggu sampai selesai (bisa lama)
+  4. Coba lagi: npm start
+
+KALAU MASIH ERROR:
+  1. Hapus node_modules folder
+  2. Hapus package-lock.json
+  3. npm cache clean --force
+  4. npm install --fresh
+  5. npm start
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Browser tidak bisa akses http://localhost:3000
+
+PENYEBAB:
+  → Server belum started
+  → Port tidak correct
+  → Firewall blocking
+  → Browser cache problem
+
+SOLUSI:
+
+  1. Check server running:
+     Lihat terminal, cari: "Server running on http://localhost:3000"
+     Jika tidak ada, jalankan: npm start
+
+  2. Check port correct:
+     Jika ganti port, akses yang sesuai:
+     http://localhost:3001 (jika pakai port 3001)
+
+  3. Refresh browser:
+     Ctrl+F5 (hard refresh, clear cache)
+     Atau Ctrl+Shift+Delete (open cache settings)
+
+  4. Try different browser:
+     Chrome, Firefox, Safari, Edge
+     Lihat error message lebih detail
+
+  5. Check firewall:
+     Windows: Settings → Firewall → Allow app through firewall
+     Mac: System Preferences → Security & Privacy → Firewall
+
+  6. Try different machine:
+     Akses dari laptop/smartphone lain
+     Gunakan IP address: http://[YOUR-IP]:3000
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Database error / portfolio.db error
+
+ERROR MESSAGE:
+  "Cannot open database"
+  atau
+  "Database locked"
+
+PENYEBAB:
+  → portfolio.db corrupted
+  → Multiple processes access database
+  → Incomplete creation
+
+SOLUSI:
+
+  OPTION 1 - Delete dan recreate:
+    1. Close server (Ctrl+C di terminal)
+    2. Cari dan delete file: portfolio.db
+    3. Juga delete: portfolio.db-wal dan portfolio.db-shm (jika ada)
+    4. npm start
+    5. Database akan recreate otomatis
+
+  OPTION 2 - Seed sample data:
+    1. npm start (jika belum running)
+    2. Jalankan: node seed-projects.js
+    3. Database akan populated dengan sample projects
+
+  OPTION 3 - Reset completely:
+    1. Delete: portfolio.db, portfolio.db-wal, portfolio.db-shm
+    2. Close server
+    3. npm start
+    4. Double-click SEED-DATABASE.bat
+
+KALAU MASIH ERROR:
+  → Kemungkinan disk space penuh
+  → Cek free disk space
+  → Delete unnecessary files
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Image upload tidak work
+
+ERROR MESSAGE:
+  "File upload failed"
+  atau
+  "No file uploaded"
+
+PENYEBAB:
+  → assets/uploads folder tidak ada
+  → File size terlalu besar
+  → File type tidak supported
+  → Permission issue
+
+SOLUSI:
+
+  1. Check folder exists:
+     Cari folder: assets/uploads
+     Jika tidak ada, create manually atau:
+     Jalankan: node create-folders.js
+
+  2. Check file size:
+     Image harus < 5MB (ideal < 2MB)
+     Resize image jika terlalu besar
+     Gunakan online tool: tinypng.com
+
+  3. Check file type:
+     Supported: JPG, PNG, WebP
+     Jangan: BMP, GIF, SVG
+     Convert di online tool jika perlu
+
+  4. Check permissions:
+     assets/uploads harus writable
+     Windows: Right-click → Properties → Security
+     Mac/Linux: chmod 755 assets/uploads
+
+  5. Restart server:
+     Close: Ctrl+C
+     Jalankan: npm start
+     Coba upload lagi
+
+KALAU MASIH ERROR:
+  → Check browser console (F12)
+  → Lihat error message detail
+  → Try smaller/different image file
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Admin login gagal
+
+ERROR MESSAGE:
+  "Invalid credentials"
+
+PENYEBAB:
+  → Username/password salah
+  → Caps lock ON
+  → Sudah ganti password lupa yang baru
+
+SOLUSI:
+
+  1. Reset ke default:
+     Username: admin (lowercase)
+     Password: admin123
+     Pastikan TIDAK ada space
+
+  2. Check caps lock:
+     Tekan Caps Lock
+     Lihat keyboard indicator
+     OFF = no indicator
+
+  3. Hapus browser cache:
+     F12 → Application → Clear storage
+     Atau Ctrl+Shift+Delete
+
+  4. Ganti password di server.js:
+     Edit file: server.js
+     Find: const ADMIN_PASSWORD = 'admin123'
+     Change to: const ADMIN_PASSWORD = 'new-password'
+     Restart server
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Admin panel tidak load / blank page
+
+PENYEBAB:
+  → Admin.html error
+  → JavaScript error
+  → CSS problem
+  → Server tidak running
+
+SOLUSI:
+
+  1. Check server running:
+     Open terminal: npm start
+     Wait for: "Server running..."
+
+  2. Check console for errors:
+     Press F12 (Developer Tools)
+     Click "Console" tab
+     Look for red error messages
+     Read error text carefully
+
+  3. Refresh page:
+     Ctrl+F5 (hard refresh)
+     Or Ctrl+Shift+Delete (clear cache)
+
+  4. Check network errors:
+     F12 → Network tab
+     Reload page
+     Look for red failed requests
+     Note the 404/500 errors
+
+  5. Check .js and .css files:
+     assets/js/admin.js must exist
+     assets/css/admin.css must exist
+     If missing, check file list
+
+  6. Check file paths:
+     All script src= must be correct
+     All link href= must be correct
+
+KALAU MASIH ERROR:
+  → Screenshot error message
+  → Copy error text
+  → Search di Google
+  → Read SETUP.md untuk context
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: CORS error / Cross-origin error
+
+ERROR MESSAGE:
+  "Access to XMLHttpRequest blocked by CORS policy"
+
+PENYEBAB:
+  → Server berjalan di port berbeda
+  → API URL salah di JavaScript
+  → Browser blocking requests
+
+SOLUSI:
+
+  1. Check server running di port 3000:
+     Terminal harus show: "Server running on http://localhost:3000"
+     Jika port lain, update .js files
+
+  2. Check API URL di script.js:
+     Edit: assets/js/script.js
+     Find: const API_URL = 'http://localhost:3000/api'
+     Pastikan correct
+
+  3. Restart server:
+     Ctrl+C di terminal
+     npm start
+     Refresh browser
+
+  4. Check browser console:
+     F12 → Console tab
+     Look untuk "CORS" error messages
+     Baca URL yang di-block
+
+KALAU MASIH ERROR:
+  → Kemungkinan localhost bukan port 3000
+  → Edit API_URL sesuai server port
+  → Restart server dan browser
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Splash screen tidak show / redirect langsung
+
+PENYEBAB:
+  → splash.html tidak exist
+  → Bookmark langsung ke index.html
+  → localStorage token masih ada
+  → Timeout terlalu cepat
+
+SOLUSI:
+
+  1. Access splash page directly:
+     http://localhost:3000/splash.html
+
+  2. Check file exists:
+     Pastikan ada file: splash.html
+
+  3. Clear browser data:
+     F12 → Application → Clear storage
+     Delete localStorage adminToken
+
+  4. Hard refresh:
+     Ctrl+F5
+
+  5. Try incognito/private window:
+     No cache, no localStorage
+
+  6. Edit splash.html if needed:
+     Change redirect timeout:
+     setTimeout(() => { ... }, 3500);
+     (3500 = 3.5 seconds)
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Project modal tidak open / tidak show
+
+PENYEBAB:
+  → API call gagal (projects tidak load)
+  → Modal.js error
+  → Project tidak ada
+  → JavaScript error
+
+SOLUSI:
+
+  1. Check console errors:
+     F12 → Console tab
+     Look untuk red errors
+     Read error message
+
+  2. Check network:
+     F12 → Network tab
+     Filter: "projects"
+     Check request status
+     Should be 200 (success)
+
+  3. Check portfolio page:
+     Lihat jika project cards visible
+     Jika tidak, projects tidak load
+
+  4. Seed sample projects:
+     Double-click SEED-DATABASE.bat
+     Refresh page
+     Try click project lagi
+
+  5. Check modal HTML:
+     admin.html punya element dengan id="projectDetailModal"
+     JavaScript create modal dynamically
+
+  6. Restart everything:
+     Close browser
+     Close server (Ctrl+C)
+     npm start
+     Open http://localhost:3000
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Styling tidak work / CSS not applied
+
+PENYEBAB:
+  → CSS file path wrong
+  → File not found
+  → CSS syntax error
+  → Browser cache old version
+
+SOLUSI:
+
+  1. Check CSS file exists:
+     assets/css/style.css
+     assets/css/admin.css
+
+  2. Check link tag correct:
+     <link rel="stylesheet" href="./assets/css/style.css">
+     Path must be relative & correct
+
+  3. Hard refresh browser:
+     Ctrl+F5 (clear cache)
+     Ctrl+Shift+Delete (open cache settings)
+
+  4. Check CSS syntax:
+     Open CSS file
+     Look untuk syntax errors (missing ; atau })
+     Use CSS validator: jigsaw.w3.org/css-validator/
+
+  5. Check import order:
+     admin.css should come after style.css
+     Or admin.css should import style.css
+
+  6. Try different browser:
+     Chrome, Firefox, Safari
+     See if issue persists
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Mobile/Responsive design not working
+
+PENYEBAB:
+  → Viewport meta tag missing
+  → CSS media queries error
+  → Mobile browser cache
+  → Zoom level masalah
+
+SOLUSI:
+
+  1. Check viewport meta tag:
+     In <head>:
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  2. Test responsiveness:
+     F12 → Toggle device toolbar (Ctrl+Shift+M)
+     Select different devices
+     Resize browser window
+
+  3. Check CSS media queries:
+     Pastikan @media (max-width: 768px) ada
+     Check CSS syntax in media queries
+
+  4. Clear mobile browser cache:
+     Settings → Privacy → Clear cache
+     Or use incognito mode
+
+  5. Test on real device:
+     Find your IP: ipconfig (Windows) atau ifconfig (Mac)
+     On phone: http://[YOUR-IP]:3000
+     Should show responsive layout
+
+  6. Test on different browsers:
+     Chrome, Safari, Firefox
+     See if responsive work
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Website slow / laggy performance
+
+PENYEBAB:
+  → Large image files
+  → Too many animations
+  → Unoptimized code
+  → High CPU usage
+
+SOLUSI:
+
+  1. Optimize images:
+     Resize ke 800x600px max
+     Compress dengan: tinypng.com atau imageoptim.com
+     Use JPG for photos, PNG for graphics
+
+  2. Check browser console:
+     F12 → Performance tab
+     Click record
+     Use website
+     Click stop
+     Analyze what's slow
+
+  3. Check server CPU:
+     Look at terminal CPU usage
+     If high, might be database query issue
+
+  4. Disable animations (test):
+     Edit CSS:
+     change animation duration to 0.01s
+     See if faster
+     If yes, reduce animation duration
+
+  5. Check network:
+     F12 → Network tab
+     See file sizes
+     Optimize large files
+
+  6. Restart everything:
+     Close browser
+     Close server (Ctrl+C)
+     npm start
+     Clear cache: Ctrl+F5
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ PROBLEM: Google Drive / OneDrive path issues
+
+PENYEBAB:
+  → Path dengan spasi special characters
+  → Syncing conflict
+  → Permission issues
+
+SOLUSI:
+
+  1. Work direktly dari C:\ drive:
+     Move project ke: C:\portfolio-website
+     Better than OneDrive untuk development
+
+  2. Jika harus tetap di OneDrive:
+     Make sure fully synced
+     Exclude node_modules dari sync:
+     Right-click folder → OneDrive → Always keep on this device
+
+  3. Edit .env:
+     Make sure path correct
+     Use absolute paths if needed
+
+  4. Restart OneDrive:
+     Pause sync
+     Wait 1 minute
+     Resume sync
+     npm start
+
+═══════════════════════════════════════════════════════════════════════════
+
+📞 GETTING HELP
+
+If error persists:
+
+1. READ ERROR MESSAGE CAREFULLY
+   → Error message sering sudah jelas solusinya
+   → Google error text yang exact
+
+2. CHECK LOGS
+   → Browser console (F12 → Console)
+   → Terminal output
+   → Screenshot error message
+
+3. CHECK DOCUMENTATION
+   → SETUP.md for detailed guide
+   → QUICK-START.md for examples
+   → README for overview
+
+4. ISOLATION TESTING
+   → Test one feature at a time
+   → Try simple test first
+   → Rule out variables
+
+5. RESTART EVERYTHING
+   → Close browser
+   → Close server
+   → npm start
+   → Hard refresh (Ctrl+F5)
+   → Try again
+
+═══════════════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST SEBELUM MINTA HELP:
+
+  ☑ Node.js installed (node --version)
+  ☑ npm install completed successfully
+  ☑ Server running (terminal show running message)
+  ☑ Browser cache cleared (Ctrl+F5)
+  ☑ Try different browser (Chrome, Firefox)
+  ☑ Restart computer (full reboot)
+  ☑ Read error message 3 times
+  ☑ Google error message
+  ☑ Check SETUP.md documentation
+  ☑ Verify file paths correct
+
+═══════════════════════════════════════════════════════════════════════════
+
+Most problems resolve dengan:
+  1. npm install
+  2. npm start
+  3. Ctrl+F5 (hard refresh)
+
+If still not work:
+  1. Delete node_modules
+  2. Delete package-lock.json
+  3. npm install
+  4. npm start
+
+If STILL not work:
+  1. Close everything
+  2. Restart computer
+  3. Start fresh
+
+Good luck! 🍀
+
+═══════════════════════════════════════════════════════════════════════════

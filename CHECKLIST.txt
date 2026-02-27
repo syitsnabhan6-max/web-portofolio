@@ -1,0 +1,308 @@
+✅ PORTFOLIO WEBSITE - INSTALLATION CHECKLIST
+
+══════════════════════════════════════════════════════════════════════
+
+SEBELUM MULAI:
+  ☐ Node.js v14+ sudah installed (cek: node --version)
+  ☐ NPM v6+ sudah installed (cek: npm --version)
+  ☐ Project folder sudah ada di: 
+    C:\Users\syits\OneDrive\Documents\web porto personal
+
+══════════════════════════════════════════════════════════════════════
+
+QUICK START (5 MENIT):
+
+OPTION A - Windows (Paling Mudah):
+  ☐ 1. Buka folder project
+  ☐ 2. Double-click: START-SERVER.bat
+  ☐ 3. Tunggu selesai, jangan close window
+  ☐ 4. Buka browser: http://localhost:3000
+  ☐ 5. Admin: http://localhost:3000/admin.html
+  ☐ 6. Login: admin / admin123
+
+OPTION B - Manual Terminal:
+  ☐ 1. Buka Command Prompt / PowerShell
+  ☐ 2. cd "C:\Users\syits\OneDrive\Documents\web porto personal"
+  ☐ 3. npm install
+  ☐ 4. npm start
+  ☐ 5. Buka browser: http://localhost:3000
+
+══════════════════════════════════════════════════════════════════════
+
+FILE YANG HARUS ADA:
+
+Core Files:
+  ☐ index.html             - Main portfolio page
+  ☐ admin.html             - Admin panel
+  ☐ splash.html            - Loading screen
+  ☐ server.js              - Backend server
+  ☐ package.json           - Dependencies
+
+Configuration:
+  ☐ .env                   - Environment vars
+  ☐ .env.example           - Example config
+  ☐ .gitignore             - Git ignore
+
+Scripts:
+  ☐ START-SERVER.bat       - Start server (Windows)
+  ☐ SEED-DATABASE.bat      - Add sample data
+  ☐ create-folders.js      - Setup helper
+  ☐ seed-projects.js       - Sample data
+
+CSS:
+  ☐ assets/css/style.css   - Main styles
+  ☐ assets/css/admin.css   - Admin styles
+
+JavaScript:
+  ☐ assets/js/script.js    - Main JS
+  ☐ assets/js/admin.js     - Admin JS
+
+Documentation:
+  ☐ README.md              - Updated README
+  ☐ SETUP.md               - Detailed guide
+  ☐ QUICK-START.md         - Quick guide
+  ☐ INSTALASI.txt          - Ini (dalam Indonesian)
+
+Folders (auto-created):
+  ☐ assets/uploads/        - Untuk upload images
+  ☐ node_modules/          - Dependencies
+
+Database (auto-created):
+  ☐ portfolio.db           - SQLite database
+
+══════════════════════════════════════════════════════════════════════
+
+FIRST RUN CHECKLIST:
+
+  ☐ Server started successfully
+  ☐ Can access http://localhost:3000
+  ☐ Can access admin panel
+  ☐ Can login (admin/admin123)
+  ☐ Can see "Add Project" form
+  ☐ Can upload image
+  ☐ Database created (portfolio.db)
+
+══════════════════════════════════════════════════════════════════════
+
+ADDING SAMPLE PROJECTS:
+
+Option A - Automatic (Recommended):
+  ☐ Double-click: SEED-DATABASE.bat
+  ☐ Tunggu selesai
+  ☐ Refresh admin panel
+  ☐ Lihat 6 sample projects
+
+Option B - Manual:
+  ☐ Open terminal
+  ☐ cd "project folder"
+  ☐ node seed-projects.js
+  ☐ Done!
+
+══════════════════════════════════════════════════════════════════════
+
+ADDING YOUR FIRST PROJECT:
+
+  ☐ 1. Login ke: http://localhost:3000/admin.html
+  ☐ 2. Username: admin
+  ☐ 3. Password: admin123
+  ☐ 4. Click tab "Add Project"
+  ☐ 5. Fill form:
+        ☐ Title: Nama project
+        ☐ Category: Pilih kategori
+        ☐ Description: Penjelasan singkat
+        ☐ Problem: Masalah yang disolve
+        ☐ Solution: Cara solvenya
+        ☐ Technologies: Teknologi (comma-separated)
+        ☐ Image: Upload screenshot (optional)
+        ☐ Project URL: Link (optional)
+        ☐ GitHub URL: Link (optional)
+  ☐ 6. Click "Create Project"
+  ☐ 7. Go to http://localhost:3000/index.html
+  ☐ 8. Click "Portfolio" tab
+  ☐ 9. Klik project card untuk lihat detail
+
+══════════════════════════════════════════════════════════════════════
+
+CUSTOMIZATION:
+
+Profile/Contact Info:
+  ☐ Edit index.html
+  ☐ Change name, title, email, phone
+  ☐ Update social media links
+
+Admin Password:
+  ☐ Edit server.js
+  ☐ Find: const ADMIN_PASSWORD = 'admin123'
+  ☐ Change to: const ADMIN_PASSWORD = 'your-new-password'
+
+Colors/Theme:
+  ☐ Edit assets/css/style.css
+  ☐ Edit assets/css/admin.css
+  ☐ Change CSS variables at top
+
+Splash Screen:
+  ☐ Edit splash.html
+  ☐ Change H1 text, subtitle, logo
+
+══════════════════════════════════════════════════════════════════════
+
+TESTING CHECKLIST:
+
+Desktop:
+  ☐ Open http://localhost:3000
+  ☐ Check all pages load
+  ☐ Click portfolio projects
+  ☐ Modal shows details
+  ☐ Click admin link
+  ☐ Check admin interface
+
+Mobile (Optional):
+  ☐ Find your IP: cmd → ipconfig
+  ☐ On phone: http://[YOUR-IP]:3000
+  ☐ Check responsive design
+  ☐ Check touch interactions
+
+Admin Panel:
+  ☐ Login works
+  ☐ Can view projects
+  ☐ Can edit project
+  ☐ Can delete project
+  ☐ Can search projects
+  ☐ Can export data
+  ☐ Image upload works
+
+══════════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING:
+
+Problem: "Module not found"
+  ☐ Run: npm install
+  ☐ Restart server
+
+Problem: Port 3000 in use
+  ☐ Edit server.js: const PORT = 3001
+  ☐ Or: Close other app using port 3000
+
+Problem: Image upload fails
+  ☐ Check assets/uploads folder exists
+  ☐ Check file size < 5MB
+  ☐ Try JPG instead of PNG
+
+Problem: Admin login fails
+  ☐ Username: admin (not capitalized)
+  ☐ Password: admin123
+  ☐ Check caps lock
+
+Problem: Database error
+  ☐ Delete portfolio.db
+  ☐ Restart server
+  ☐ Database recreates automatically
+
+══════════════════════════════════════════════════════════════════════
+
+DEPLOYMENT PREPARATION:
+
+Before Going Live:
+  ☐ Change admin password
+  ☐ Update profile info
+  ☐ Add all projects
+  ☐ Upload project images
+  ☐ Test on mobile
+  ☐ Check all links work
+  ☐ Update social media URLs
+  ☐ Test contact form
+  ☐ Back up database (export JSON)
+
+For Heroku:
+  ☐ Create Procfile
+  ☐ Create account at heroku.com
+  ☐ heroku login
+  ☐ heroku create
+  ☐ git push heroku main
+  ☐ Set environment variables
+
+For VPS:
+  ☐ Upload files
+  ☐ npm install
+  ☐ Setup PM2
+  ☐ Configure domain
+  ☐ Setup SSL certificate
+
+══════════════════════════════════════════════════════════════════════
+
+ONGOING MAINTENANCE:
+
+Monthly:
+  ☐ Add 1-2 new projects
+  ☐ Update project images
+  ☐ Export database backup
+
+Quarterly:
+  ☐ Update npm packages
+  ☐ Review project descriptions
+  ☐ Check all links still work
+  ☐ Test on latest devices
+
+Yearly:
+  ☐ Full portfolio review
+  ☐ Update design if needed
+  ☐ Remove old/outdated projects
+  ☐ Update technologies list
+
+══════════════════════════════════════════════════════════════════════
+
+SUCCESS INDICATORS:
+
+You're all set when:
+  ✅ Server running without errors
+  ✅ Can access all 3 pages (main, admin, splash)
+  ✅ Can login to admin
+  ✅ Can create/edit/delete projects
+  ✅ Images upload successfully
+  ✅ Projects appear in portfolio
+  ✅ Modal shows complete info
+  ✅ Mobile view looks good
+  ✅ Database persists data
+
+══════════════════════════════════════════════════════════════════════
+
+COMMON QUESTIONS:
+
+Q: Bagaimana cara update satu project?
+A: Login admin → Click "Edit" pada project card → Ubah data → Click "Update Project"
+
+Q: Bagaimana cara delete project?
+A: Di admin panel → Click "Delete" pada project atau di edit modal
+
+Q: Bagaimana cara backup database?
+A: Admin panel → Tab "Settings" → Click "Export Data (JSON)"
+
+Q: Bagaimana cara hosted online?
+A: Lihat SETUP.md - Deployment section untuk Heroku/VPS
+
+Q: Bagaimana cara ganti warna?
+A: Edit CSS files di assets/css/
+
+Q: Bagaimana cara ganti profile info?
+A: Edit index.html - sidebar section
+
+══════════════════════════════════════════════════════════════════════
+
+HELP & SUPPORT:
+
+If you encounter issues:
+  1. Check console (F12 → Console tab)
+  2. Check terminal for error messages
+  3. Read SETUP.md detailed guide
+  4. Read QUICK-START.md examples
+  5. Check npm install ran correctly
+
+══════════════════════════════════════════════════════════════════════
+
+YOU'RE READY! 🚀
+
+Next: Double-click START-SERVER.bat and enjoy your professional portfolio!
+
+Built with ❤️ - Professional Portfolio System
+
+══════════════════════════════════════════════════════════════════════

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Test - Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .test-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      border-left: 4px solid #007bff;
+    }
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+    .result {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 4px;
+      font-family: monospace;
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 400px;
+      overflow: auto;
+    }
+    .error {
+      background: #ffe6e6;
+      color: #c00;
+      padding: 15px;
+      border-radius: 4px;
+      border-left: 4px solid #c00;
+    }
+    .success {
+      background: #e6ffe6;
+      color: #060;
+      padding: 15px;
+      border-radius: 4px;
+      border-left: 4px solid #060;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px 0;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #007bff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🔍 API Debug Test</h1>
+  
+  <div class="test-section">
+    <h2>1. Test Health Check</h2>
+    <button onclick="testHealth()">Test /api/health</button>
+    <div id="health-result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>2. Test Projects API</h2>
+    <button onclick="testProjects()">Test /api/projects</button>
+    <div id="projects-result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>3. Debug Database Content</h2>
+    <button onclick="testDebug()">Test /api/debug/projects</button>
+    <div id="debug-result"></div>
+  </div>
+
+  <div class="test-section">
+    <h2>4. Test Categories API</h2>
+    <button onclick="testCategories()">Test /api/categories</button>
+    <div id="categories-result"></div>
+  </div>
+
+  <script>
+    const API_URL = 'http://localhost:3000';
+
+    async function testHealth() {
+      const resultDiv = document.getElementById('health-result');
+      resultDiv.innerHTML = '<div class="loading"></div> Testing...';
+      
+      try {
+        const response = await fetch(`${API_URL}/api/health`);
+        const data = await response.json();
+        resultDiv.innerHTML = `<div class="success"><strong>✅ Success!</strong>\n${JSON.stringify(data, null, 2)}</div>`;
+      } catch (err) {
+        resultDiv.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${err.message}</div>`;
+      }
+    }
+
+    async function testProjects() {
+      const resultDiv = document.getElementById('projects-result');
+      resultDiv.innerHTML = '<div class="loading"></div> Testing...';
+      
+      try {
+        const response = await fetch(`${API_URL}/api/projects`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        resultDiv.innerHTML = `<div class="success"><strong>✅ Success!</strong> Found ${data.length} projects\n${JSON.stringify(data, null, 2)}</div>`;
+      } catch (err) {
+        resultDiv.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${err.message}</div>`;
+      }
+    }
+
+    async function testCategories() {
+      const resultDiv = document.getElementById('categories-result');
+      resultDiv.innerHTML = '<div class="loading"></div> Testing...';
+      
+      try {
+        const response = await fetch(`${API_URL}/api/categories`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        resultDiv.innerHTML = `<div class="success"><strong>✅ Success!</strong> Found ${data.length} categories\n${JSON.stringify(data, null, 2)}</div>`;
+      } catch (err) {
+        resultDiv.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${err.message}</div>`;
+      }
+    }
+
+    async function testDebug() {
+      const resultDiv = document.getElementById('debug-result');
+      resultDiv.innerHTML = '<div class="loading"></div> Testing...';
+      
+      try {
+        const response = await fetch(`${API_URL}/api/debug/projects`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        resultDiv.innerHTML = `<div class="success"><strong>✅ Success!</strong>\n${JSON.stringify(data, null, 2)}</div>`;
+      } catch (err) {
+        resultDiv.innerHTML = `<div class="error"><strong>❌ Error:</strong> ${err.message}</div>`;
+      }
+    }
+
+    // Auto-test on load
+    window.addEventListener('load', () => {
+      testHealth();
+    });
+  </script>
+</body>
+</html>

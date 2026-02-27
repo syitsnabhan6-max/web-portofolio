@@ -1,0 +1,168 @@
+{
+  "lang": {
+    "ariaLabel": "言語"
+  },
+  "sidebar": {
+    "role": "デジタルシステムビルダー",
+    "showContacts": "連絡先を表示"
+  },
+  "nav": {
+    "about": "概要",
+    "resume": "経歴",
+    "portfolio": "ポートフォリオ",
+    "contact": "連絡"
+  },
+  "contact": {
+    "title": "連絡",
+    "emailLabel": "メール",
+    "phoneLabel": "電話",
+    "birthdayLabel": "誕生日",
+    "locationLabel": "所在地",
+    "form": {
+      "title": "お問い合わせフォーム",
+      "fullName": "氏名",
+      "email": "メールアドレス",
+      "message": "メッセージ",
+      "send": "送信"
+    }
+  },
+  "about": {
+    "title": "私について",
+    "p1": "私はデジタルデザイナーであり、システム志向のビルダーです。整理された構造と機能性を重視し、クリーンなデジタル体験を作ります。見た目だけでなく、目的に沿った形で構築します。",
+    "p2": "私は常に「構造を先に、見た目は後に」という考えで進めます。デザインは美しさだけでなく、使いやすさと仕組みが大切です。レイアウトの改善や UI の流れの最適化など、体験をより効率的にします。",
+    "p3": "現在はビジュアルデザインから、Web 構造設計やデータベース連携へと領域を広げています。ホームスクーリングで学びながら、輸出入会社での実務経験も積んでいます。創造性と論理を組み合わせ、拡張性のあるデジタル成果物を目指します。",
+    "servicesTitle": "提供できること",
+    "services": {
+      "webDev": {
+        "title": "Web 開発",
+        "text": "構造が整理されたレスポンシブサイトを制作します。機能統合を継続的に改善し、基本的なデータベース機能も取り入れて、より動的で拡張可能なシステムにします。"
+      },
+      "visualDesign": {
+        "title": "ビジュアルデザイン",
+        "text": "コンセプトに基づいたポスター、ブランドビジュアル、プロモーション素材を制作します。構図のバランス、明快さ、感情的なインパクトを重視します。"
+      },
+      "systemImprovement": {
+        "title": "システム改善",
+        "text": "レイアウト再構成や UI フロー改善、機能効率の向上によってデジタルプロジェクトを最適化します。"
+      }
+    }
+  },
+  "resume": {
+    "title": "経歴",
+    "summaryTitle": "サマリー",
+    "summaryText": "構造的な思考を持ち、システム開発に強い関心を持つ若手デジタルデザイナー。レスポンシブ Web 制作、ブランド用ビジュアル制作、ワークフロー改善の経験があります。ホームスクーリングと輸出入会社での実務を両立し、創作からスケーラブルなデジタルソリューションへ成長中です。",
+    "educationTitle": "学歴",
+    "experienceTitle": "経験",
+    "skillsTitle": "スキル",
+    "technicalSkillsTitle": "テクニカルスキル",
+    "creativeSkillsTitle": "クリエイティブスキル",
+    "softSkillsTitle": "戦略・ソフトスキル",
+    "labels": {
+      "present": "現在",
+      "ongoing": "継続中"
+    },
+    "education": {
+      "homeschool": {
+        "title": "ホームスクーリング",
+        "text": "柔軟な学習システムで教育を継続しつつ、デジタルデザインと Web システムのスキルを自主的に強化。現在も継続して、創造面と技術面の両方を伸ばしています。"
+      },
+      "smk": {
+        "title": "SMK NEGERI 2 CILAKU",
+        "text": "専攻：ビジュアルコミュニケーションデザイン。グラフィックデザイン、イラスト、写真、映像制作、ビジュアルブランディングに注力。学校の制作活動や個人の実験的制作に積極的に参加。"
+      },
+      "smp": {
+        "title": "SMP ISLAM AL-ROHMAT",
+        "text": "寄宿環境で一般教育を学びながら、規律・時間管理・チームワークを習得し、創作への関心も育てました。"
+      },
+      "sdn": {
+        "title": "SDN SINDANGRAJA 04",
+        "text": "描画と基本的な PC スキルを通して、アートとテクノロジーへの初期の関心を育みました。"
+      }
+    },
+    "experience": {
+      "export": {
+        "title": "輸出入会社",
+        "position": "職種：Information Technology",
+        "b1": "輸出入の業務フローと日次運用をサポート",
+        "b2": "文書処理と調整業務を正確に対応",
+        "b3": "構造化された事務プロセスと基準に貢献",
+        "b4": "プロフェッショナルなビジネス環境で業務",
+        "b5": "物流と国際貿易システムの実務経験を獲得"
+      },
+      "freelance": {
+        "title": "フリーランス グラフィックデザイナー",
+        "text": "ポスター、SNS コンテンツ、簡易なブランド素材など多様な案件を担当。納期管理、クライアントコミュニケーション、品質維持を学びました。"
+      },
+      "school": {
+        "title": "学校のクリエイティブプロジェクト",
+        "text": "学校のデザイン・マルチメディア需要に貢献（イベントポスター、バナー、短尺動画編集など）。チームワークと創造的な問題解決を経験。"
+      },
+      "personal": {
+        "title": "個人プロジェクト",
+        "text": "3D アニメーション、Web レイアウト、実験的ビジュアルを探求。実制作を通してデザイン感覚を磨き、新しいツールを学び続けています。"
+      }
+    },
+    "skills": {
+      "tech": {
+        "html": "• HTML",
+        "css": "• CSS",
+        "js": "• JavaScript（基礎）",
+        "db": "• データベース連携（基礎）",
+        "ui": "• UI 構造設計"
+      },
+      "creative": {
+        "poster": "• ポスターデザイン",
+        "brand": "• ブランドのビジュアルアイデンティティ",
+        "layout": "• レイアウト構成",
+        "concept": "• コンセプト開発"
+      },
+      "soft": {
+        "problemSolving": "• 問題解決",
+        "systemThinking": "• システム思考",
+        "independentLearning": "• 自主学習",
+        "analytical": "• 分析的アプローチ",
+        "continuous": "• 継続的改善マインド"
+      }
+    }
+  },
+  "portfolio": {
+    "title": "ポートフォリオ",
+    "selectCategory": "カテゴリを選択",
+    "loading": "読み込み中…",
+    "noProjects": "プロジェクトが見つかりません。",
+    "loadError": "読み込みに失敗しました：{message}",
+    "projectAlt": "プロジェクト",
+    "untitled": "無題"
+  },
+  "filters": {
+    "all": "すべて"
+  },
+  "categories": {
+    "web-development": "Web 開発",
+    "mobile-development": "モバイル開発",
+    "graphic-design": "グラフィックデザイン",
+    "photography": "写真",
+    "videography": "映像制作",
+    "ui-ux-design": "UI/UX デザイン",
+    "branding": "ブランディング",
+    "illustration": "イラスト",
+    "animation": "アニメーション",
+    "other": "その他"
+  },
+  "projectModal": {
+    "close": "閉じる",
+    "previousImage": "前へ",
+    "nextImage": "次へ",
+    "galleryImageAlt": "ギャラリー画像 {n}",
+    "problem": "課題",
+    "solution": "解決策",
+    "technologies": "使用技術",
+    "viewProject": "プロジェクトを見る",
+    "github": "GitHub"
+  },
+  "clients": {
+    "title": "コラボレーション",
+    "teamMedia": "メディアチーム",
+    "leadTeamMedia": "メディアチームリーダー"
+  }
+}

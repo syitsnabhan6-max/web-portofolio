@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Portfolio Management</title>
+  <link rel="stylesheet" href="./assets/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Login Section -->
+  <div id="loginSection" class="login-section">
+    <div class="login-container">
+      <div class="login-box">
+        <h1>Admin Portal</h1>
+        <p>Portfolio Management System</p>
+        
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          
+          <button type="submit" class="btn-login">Login</button>
+          <p class="error-msg" id="loginError"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div id="adminSection" class="admin-section" style="display: none;">
+    <nav class="admin-navbar">
+      <div class="navbar-left">
+        <h2>Portfolio Admin</h2>
+      </div>
+      <div class="navbar-right">
+        <span id="adminUsername"></span>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+      </div>
+    </nav>
+
+    <div class="admin-container">
+      <!-- Sidebar -->
+      <aside class="admin-sidebar">
+        <button class="sidebar-btn active" onclick="switchTab('projects', event)">
+          <i class="fas fa-project-diagram"></i> Projects
+        </button>
+        <button class="sidebar-btn" onclick="switchTab('add-project', event)">
+          <i class="fas fa-plus"></i> Add Project
+        </button>
+        <button class="sidebar-btn" onclick="switchTab('settings', event)">
+          <i class="fas fa-cog"></i> Settings
+        </button>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="admin-content">
+        <!-- Projects Tab -->
+        <div id="projectsTab" class="tab-content active">
+          <div class="tab-header">
+            <h2>Manage Projects</h2>
+            <input type="text" id="searchInput" placeholder="Search projects..." class="search-input">
+          </div>
+
+          <div class="projects-grid" id="projectsList">
+            <!-- Projects akan dimuat di sini -->
+          </div>
+        </div>
+
+        <!-- Add Project Tab -->
+        <div id="addProjectTab" class="tab-content">
+          <div class="tab-header">
+            <h2>Add New Project</h2>
+          </div>
+
+          <form id="projectForm" class="project-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="projectTitle">Project Title *</label>
+                <input type="text" id="projectTitle" name="title" required>
+              </div>
+
+              <div class="form-group">
+                <label for="projectCategory">Category *</label>
+                <select id="projectCategory" name="category" required>
+                  <option value="">Select Category</option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="Graphic Design">Graphic Design</option>
+                  <option value="Photography">Photography</option>
+                  <option value="UI/UX Design">UI/UX Design</option>
+                  <option value="Videography">Videography</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="projectDescription">Description *</label>
+              <textarea id="projectDescription" name="description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="projectProblem">Problem/Challenge *</label>
+              <textarea id="projectProblem" name="problem" rows="3" required
+                placeholder="What problem did this project solve?"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="projectSolution">Solution *</label>
+              <textarea id="projectSolution" name="solution" rows="3" required
+                placeholder="How did you solve it?"></textarea>
+            </div>
+
+            <details class="i18n-section">
+              <summary>Translations (optional)</summary>
+              <div class="form-row" style="margin-top: 14px;">
+                <div class="form-group">
+                  <label for="i18nLang">Language</label>
+                  <select id="i18nLang">
+                    <option value="en">EN</option>
+                    <option value="id">ID</option>
+                    <option value="zh">ZH</option>
+                    <option value="ja">JA</option>
+                    <option value="fr">FR</option>
+                    <option value="ru">RU</option>
+                    <option value="es">ES</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Saved</label>
+                  <input type="text" id="i18nSaved" value="-" disabled>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="i18nTitle">Title (translated)</label>
+                <input type="text" id="i18nTitle">
+              </div>
+
+              <div class="form-group">
+                <label for="i18nDescription">Description (translated)</label>
+                <textarea id="i18nDescription" rows="4"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="i18nProblem">Problem/Challenge (translated)</label>
+                <textarea id="i18nProblem" rows="3"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="i18nSolution">Solution (translated)</label>
+                <textarea id="i18nSolution" rows="3"></textarea>
+              </div>
+
+              <div class="form-actions" style="justify-content: flex-start; margin-top: 10px;">
+                <button type="button" class="btn-secondary" id="i18nSaveBtn">Save Translation</button>
+              </div>
+
+              <input type="hidden" name="title_i18n" id="titleI18n">
+              <input type="hidden" name="description_i18n" id="descriptionI18n">
+              <input type="hidden" name="problem_i18n" id="problemI18n">
+              <input type="hidden" name="solution_i18n" id="solutionI18n">
+            </details>
+
+            <div class="form-group">
+              <label for="projectTechnologies">Technologies Used *</label>
+              <input type="text" id="projectTechnologies" name="technologies" required
+                placeholder="e.g., HTML, CSS, JavaScript, React (comma separated)">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="projectImage">Project Images (Main + Gallery)</label>
+                <input type="file" id="projectImage" name="image" accept="image/*" required>
+                <small>Main image: 800x600px or larger</small>
+              </div>
+
+              <div class="form-group">
+                <label for="projectGalleryImages">Additional Gallery Images</label>
+                <div class="file-drop-zone" id="dropZone">
+                  <i class="fas fa-cloud-upload-alt"></i>
+                  <p>Drag and drop images here or click to browse</p>
+                  <small>Up to 5 additional images (optional)</small>
+                  <input type="file" id="projectGalleryImages" name="gallery_images" accept="image/*" multiple style="display: none;">
+                </div>
+                <div id="imagePreviewContainer" class="image-preview-container"></div>
+              </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="projectUrl">Project URL</label>
+                <input type="url" id="projectUrl" name="project_url" placeholder="https://example.com">
+              </div>
+
+              <div class="form-group">
+                <label for="projectGithub">GitHub URL</label>
+                <input type="url" id="projectGithub" name="github_url" placeholder="https://github.com/username/repo">
+              </div>
+            </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Create Project</button>
+              <button type="reset" class="btn-secondary">Clear Form</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settingsTab" class="tab-content">
+          <div class="tab-header">
+            <h2>Settings & Categories</h2>
+          </div>
+
+          <!-- Category Management -->
+          <div class="settings-section">
+            <h3>Project Categories</h3>
+            <p style="color: var(--text-gray); margin-bottom: 20px;">Add new categories that will appear in project forms</p>
+            
+            <div class="category-form-wrapper">
+              <form id="categoryForm" class="category-form">
+                <div class="form-group">
+                  <label for="newCategoryName">New Category Name</label>
+                  <input type="text" id="newCategoryName" name="categoryName" placeholder="e.g., Mobile Development" required>
+                </div>
+                <button type="submit" class="btn-primary">Add Category</button>
+              </form>
+            </div>
+
+            <div id="categoriesList" class="categories-grid">
+              <!-- Categories akan dimuat di sini -->
+            </div>
+          </div>
+
+          <!-- Profile Information -->
+          <div class="settings-section" style="margin-top: 40px;">
+            <h3>Profile Information</h3>
+            <form class="settings-form">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" value="Syits Nabhan N.F" disabled>
+              </div>
+
+              <div class="form-group">
+                <label>Title/Profession</label>
+                <input type="text" value="Design Graphic" disabled>
+              </div>
+
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" value="fasyanabhan6@gmail.com" disabled>
+              </div>
+
+              <p class="info-text">To edit profile info, please update the index.html file directly.</p>
+            </form>
+          </div>
+
+          <div class="settings-section">
+            <h3>Database Information</h3>
+            <div class="info-box">
+              <p><strong>Database Type:</strong> SQLite</p>
+              <p><strong>File:</strong> portfolio.db</p>
+              <p><strong>Total Projects:</strong> <span id="totalProjects">0</span></p>
+              <button class="btn-secondary" onclick="exportDatabase()">Export Data (JSON)</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal Edit Project -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeEditModal()">&times;</span>
+      <h2>Edit Project</h2>
+
+      <form id="editProjectForm" class="project-form">
+        <input type="hidden" id="editProjectId" name="id">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editProjectTitle">Project Title *</label>
+            <input type="text" id="editProjectTitle" name="title" required>
+          </div>
+
+          <div class="form-group">
+            <label for="editProjectCategory">Category *</label>
+            <select id="editProjectCategory" name="category" required>
+              <option value="Web Development">Web Development</option>
+              <option value="Graphic Design">Graphic Design</option>
+              <option value="Photography">Photography</option>
+              <option value="UI/UX Design">UI/UX Design</option>
+              <option value="Videography">Videography</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editProjectDescription">Description *</label>
+          <textarea id="editProjectDescription" name="description" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="editProjectProblem">Problem/Challenge *</label>
+          <textarea id="editProjectProblem" name="problem" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="editProjectSolution">Solution *</label>
+          <textarea id="editProjectSolution" name="solution" rows="3" required></textarea>
+        </div>
+
+        <details class="i18n-section">
+          <summary>Translations (optional)</summary>
+          <div class="form-row" style="margin-top: 14px;">
+            <div class="form-group">
+              <label for="editI18nLang">Language</label>
+              <select id="editI18nLang">
+                <option value="en">EN</option>
+                <option value="id">ID</option>
+                <option value="zh">ZH</option>
+                <option value="ja">JA</option>
+                <option value="fr">FR</option>
+                <option value="ru">RU</option>
+                <option value="es">ES</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Saved</label>
+              <input type="text" id="editI18nSaved" value="-" disabled>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="editI18nTitle">Title (translated)</label>
+            <input type="text" id="editI18nTitle">
+          </div>
+
+          <div class="form-group">
+            <label for="editI18nDescription">Description (translated)</label>
+            <textarea id="editI18nDescription" rows="4"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="editI18nProblem">Problem/Challenge (translated)</label>
+            <textarea id="editI18nProblem" rows="3"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="editI18nSolution">Solution (translated)</label>
+            <textarea id="editI18nSolution" rows="3"></textarea>
+          </div>
+
+          <div class="form-actions" style="justify-content: flex-start; margin-top: 10px;">
+            <button type="button" class="btn-secondary" id="editI18nSaveBtn">Save Translation</button>
+          </div>
+
+          <input type="hidden" name="title_i18n" id="editTitleI18n">
+          <input type="hidden" name="description_i18n" id="editDescriptionI18n">
+          <input type="hidden" name="problem_i18n" id="editProblemI18n">
+          <input type="hidden" name="solution_i18n" id="editSolutionI18n">
+        </details>
+
+        <div class="form-group">
+          <label for="editProjectTechnologies">Technologies Used *</label>
+          <input type="text" id="editProjectTechnologies" name="technologies" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editProjectImage">Project Image</label>
+            <input type="file" id="editProjectImage" name="image" accept="image/*">
+            <small>Leave empty to keep current image</small>
+          </div>
+
+          <div class="form-group">
+            <label for="editProjectUrl">Project URL</label>
+            <input type="url" id="editProjectUrl" name="project_url">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="editProjectGithub">GitHub URL</label>
+          <input type="url" id="editProjectGithub" name="github_url">
+        </div>
+
+        <!-- Gallery Management Section -->
+        <div class="gallery-management-section">
+          <h4>Project Gallery</h4>
+          
+          <div class="gallery-add-images">
+            <label for="editProjectGalleryImages">Add More Images to Gallery</label>
+            <div class="file-drop-zone" id="editDropZone">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <p>Drag and drop images or click to browse</p>
+              <small>Add up to 5 images</small>
+              <input type="file" id="editProjectGalleryImages" name="gallery_images" accept="image/*" multiple style="display: none;">
+            </div>
+            <div id="editImagePreviewContainer" class="image-preview-container"></div>
+            <button type="button" class="btn-secondary" id="uploadGalleryBtn" onclick="uploadAdditionalGalleryImagesHandler(event)" style="width: 100%; margin-top: 10px; display: none;">
+              <i class="fas fa-upload"></i> Upload Selected Images
+            </button>
+          </div>
+
+          <div class="gallery-view-section">
+            <label>Current Gallery Images</label>
+            <div id="currentGalleryContainer" class="current-gallery-grid">
+              <p>No images yet</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">Update Project</button>
+          <button type="button" class="btn-danger" onclick="deleteProject()">Delete Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./assets/js/admin.js"></script>
+</body>
+</html>

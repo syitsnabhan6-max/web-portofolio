@@ -1,0 +1,168 @@
+{
+  "lang": {
+    "ariaLabel": "Bahasa"
+  },
+  "sidebar": {
+    "role": "Pembangun Sistem Digital",
+    "showContacts": "Tampilkan Kontak"
+  },
+  "nav": {
+    "about": "Tentang",
+    "resume": "Resume",
+    "portfolio": "Portofolio",
+    "contact": "Kontak"
+  },
+  "contact": {
+    "title": "Kontak",
+    "emailLabel": "Email",
+    "phoneLabel": "Telepon",
+    "birthdayLabel": "Tanggal Lahir",
+    "locationLabel": "Lokasi",
+    "form": {
+      "title": "Form Kontak",
+      "fullName": "Nama lengkap",
+      "email": "Alamat email",
+      "message": "Pesan Anda",
+      "send": "Kirim Pesan"
+    }
+  },
+  "about": {
+    "title": "Tentang saya",
+    "p1": "Saya adalah desainer digital dan builder yang berorientasi sistem, fokus membuat pengalaman digital yang rapi, terstruktur, dan fungsional. Saya bukan hanya mendesain visual — saya membangun dengan kejelasan dan tujuan.",
+    "p2": "Saya memulai setiap project dari struktur dulu, baru estetika. Bagi saya, desain bukan hanya soal tampilan, tapi juga cara kerjanya. Saya suka merapikan sistem, memperhalus layout, dan membuat pengalaman digital lebih efisien serta terarah.",
+    "p3": "Saat ini saya sedang berkembang dari visual design menuju penataan web dan integrasi database. Di samping karya kreatif, saya melanjutkan pendidikan lewat homeschooling sambil mendapatkan pengalaman profesional di perusahaan ekspor-impor. Tujuan saya menggabungkan kreativitas dan logika — membangun karya digital yang kuat secara visual, rapi secara teknis, dan scalable.",
+    "servicesTitle": "Yang saya kerjakan",
+    "services": {
+      "webDev": {
+        "title": "Pengembangan Web",
+        "text": "Saya membangun website responsif dengan struktur layout yang bersih dan desain yang fokus pada user. Saya terus meningkatkan integrasi fitur dan mencoba fungsi database dasar untuk membuat sistem digital yang lebih dinamis dan scalable."
+      },
+      "visualDesign": {
+        "title": "Desain Visual",
+        "text": "Saya membuat poster berbasis konsep, visual branding, dan materi promosi. Fokus saya pada komposisi yang seimbang, kejelasan pesan, dan dampak emosional."
+      },
+      "systemImprovement": {
+        "title": "Peningkatan Sistem",
+        "text": "Saya merapikan dan mengoptimalkan project digital dengan menata ulang layout, memperbaiki alur UI, dan meningkatkan efisiensi fungsi."
+      }
+    }
+  },
+  "resume": {
+    "title": "Resume",
+    "summaryTitle": "Ringkasan Profesional",
+    "summaryText": "Desainer digital muda dengan pola pikir terstruktur dan minat kuat pada pengembangan berbasis sistem. Berpengalaman membangun website responsif, membuat materi visual branding, dan meningkatkan workflow digital. Saat ini menyeimbangkan pendidikan homeschooling dengan pengalaman profesional di perusahaan ekspor-impor, sambil terus berkembang dari eksekusi kreatif menuju solusi digital yang scalable.",
+    "educationTitle": "Pendidikan",
+    "experienceTitle": "Pengalaman",
+    "skillsTitle": "Keahlian saya",
+    "technicalSkillsTitle": "Keahlian Teknis",
+    "creativeSkillsTitle": "Keahlian Kreatif",
+    "softSkillsTitle": "Strategi & Soft Skill",
+    "labels": {
+      "present": "Saat ini",
+      "ongoing": "Berjalan"
+    },
+    "education": {
+      "homeschool": {
+        "title": "Program Homeschooling",
+        "text": "Melanjutkan pendidikan formal melalui sistem belajar yang fleksibel sambil fokus mengembangkan skill mandiri di desain digital dan sistem web. Saat ini aktif dengan penekanan pada peningkatan skill kreatif dan teknis."
+      },
+      "smk": {
+        "title": "SMK NEGERI 2 CILAKU",
+        "text": "Jurusan Desain Komunikasi Visual. Fokus pada desain grafis, ilustrasi, fotografi, videografi, dan visual branding. Aktif terlibat dalam project kreatif sekolah dan eksperimen desain mandiri."
+      },
+      "smp": {
+        "title": "SMP ISLAM AL-ROHMAT",
+        "text": "Mempelajari pendidikan umum sambil tinggal di lingkungan boarding. Belajar disiplin, manajemen waktu, dan kerja tim seiring berkembangnya minat kreatif."
+      },
+      "sdn": {
+        "title": "SDN SINDANGRAJA 04",
+        "text": "Mengembangkan ketertarikan awal pada seni dan teknologi melalui menggambar dan dasar-dasar komputer."
+      }
+    },
+    "experience": {
+      "export": {
+        "title": "Perusahaan Ekspor & Impor",
+        "position": "Posisi: Information Technology",
+        "b1": "Mendukung alur operasional ekspor-impor dan aktivitas harian",
+        "b2": "Menangani dokumentasi dan koordinasi tugas dengan presisi",
+        "b3": "Berkontribusi pada proses administrasi yang terstruktur dan standar kerja",
+        "b4": "Bekerja dalam lingkungan bisnis profesional",
+        "b5": "Mendapatkan pengalaman nyata pada logistik dan sistem perdagangan internasional"
+      },
+      "freelance": {
+        "title": "Freelancer Desainer Grafis",
+        "text": "Mengerjakan berbagai project desain visual seperti poster, konten media sosial, dan materi branding sederhana untuk klien lokal maupun permintaan online. Belajar mengelola deadline, komunikasi dengan klien, dan menjaga kualitas desain."
+      },
+      "school": {
+        "title": "Project Kreatif Sekolah",
+        "text": "Berkontribusi pada kebutuhan desain dan multimedia sekolah — termasuk poster acara, banner, dan editing video singkat. Mendapatkan pengalaman kerja tim dan problem-solving kreatif."
+      },
+      "personal": {
+        "title": "Project Pribadi",
+        "text": "Mengeksplorasi animasi 3D, desain layout web, dan visual eksperimental. Terus mengasah sense desain serta mempelajari tools kreatif baru lewat project langsung."
+      }
+    },
+    "skills": {
+      "tech": {
+        "html": "• HTML",
+        "css": "• CSS",
+        "js": "• JavaScript Dasar",
+        "db": "• Integrasi Database (Dasar)",
+        "ui": "• Struktur UI"
+      },
+      "creative": {
+        "poster": "• Desain Poster",
+        "brand": "• Identitas Visual Brand",
+        "layout": "• Komposisi Layout",
+        "concept": "• Pengembangan Konsep"
+      },
+      "soft": {
+        "problemSolving": "• Problem Solving",
+        "systemThinking": "• System Thinking",
+        "independentLearning": "• Belajar Mandiri",
+        "analytical": "• Pendekatan Analitis",
+        "continuous": "• Mindset Continuous Improvement"
+      }
+    }
+  },
+  "portfolio": {
+    "title": "Portofolio",
+    "selectCategory": "Pilih kategori",
+    "loading": "Memuat project...",
+    "noProjects": "Tidak ada project.",
+    "loadError": "Gagal memuat project: {message}",
+    "projectAlt": "Project",
+    "untitled": "Tanpa Judul"
+  },
+  "filters": {
+    "all": "Semua"
+  },
+  "categories": {
+    "web-development": "Pengembangan Web",
+    "mobile-development": "Pengembangan Mobile",
+    "graphic-design": "Desain Grafis",
+    "photography": "Fotografi",
+    "videography": "Videografi",
+    "ui-ux-design": "UI/UX Design",
+    "branding": "Branding",
+    "illustration": "Ilustrasi",
+    "animation": "Animasi",
+    "other": "Lainnya"
+  },
+  "projectModal": {
+    "close": "Tutup",
+    "previousImage": "Gambar sebelumnya",
+    "nextImage": "Gambar berikutnya",
+    "galleryImageAlt": "Gambar galeri {n}",
+    "problem": "Masalah",
+    "solution": "Solusi",
+    "technologies": "Teknologi",
+    "viewProject": "Lihat Project",
+    "github": "GitHub"
+  },
+  "clients": {
+    "title": "Kolaborasi Dengan",
+    "teamMedia": "Tim Media",
+    "leadTeamMedia": "Lead Tim Media"
+  }
+}
