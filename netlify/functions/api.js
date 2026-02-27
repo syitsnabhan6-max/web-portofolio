@@ -185,7 +185,7 @@ app.get('/api/health', async (req, res) => {
 app.get('/api/project-translations', async (req, res) => {
   try {
     const json = await loadProjectI18nStorage();
-    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=600');
     res.json(json);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -215,6 +215,7 @@ app.get('/api/categories', async (req, res) => {
       .select('*')
       .order('name', { ascending: true });
     if (error) throw error;
+    res.setHeader('Cache-Control', 'public, max-age=300, s-maxage=3600');
     res.json(categories || []);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -249,17 +250,31 @@ app.get('/api/projects', async (req, res) => {
       .order('created_at', { ascending: false });
     if (error) throw error;
 
-    const projectsWithImages = await Promise.all(
-      (projects || []).map(async (project) => {
-        const { data: images } = await supabaseAdmin
-          .from('project_images')
-          .select('*')
-          .eq('project_id', project.id)
-          .order('image_order', { ascending: true });
-        return { ...project, images: images || [] };
-      })
-    );
+    const ids = (projects || []).map((p) => p.id).filter(Boolean);
+    let imagesByProject = {};
+    if (ids.length) {
+      const { data: images, error: imagesError } = await supabaseAdmin
+        .from('project_images')
+        .select('*')
+        .in('project_id', ids)
+        .order('image_order', { ascending: true });
+      if (imagesError) throw imagesError;
 
+      imagesByProject = (images || []).reduce((acc, img) => {
+        const pid = img.project_id;
+        if (!pid) return acc;
+        if (!acc[pid]) acc[pid] = [];
+        acc[pid].push(img);
+        return acc;
+      }, {});
+    }
+
+    const projectsWithImages = (projects || []).map((project) => ({
+      ...project,
+      images: imagesByProject[project.id] || []
+    }));
+
+    res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=300');
     res.json(projectsWithImages);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -284,6 +299,7 @@ app.get('/api/projects/:id', async (req, res) => {
     if (imgError) throw imgError;
 
     project.images = images || [];
+    res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=300');
     res.json(project);
   } catch (err) {
     res.status(500).json({ error: err.message });
