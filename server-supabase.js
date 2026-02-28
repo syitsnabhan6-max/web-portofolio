@@ -577,6 +577,7 @@ app.delete('/api/projects/:projectId/images/:imageId', requireAdmin, async (req,
     const { error } = await supabaseAdmin
       .from('project_images')
       .delete()
+      .eq('project_id', req.params.projectId)
       .eq('id', req.params.imageId);
 
     if (error) throw error;

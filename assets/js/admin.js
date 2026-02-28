@@ -250,6 +250,11 @@ async function editProject(id) {
     renderProjectI18nSaved('edit');
     loadProjectI18nLang('edit');
 
+    // Clear preview container and file input for gallery images
+    document.getElementById('editImagePreviewContainer').innerHTML = '';
+    document.getElementById('editProjectGalleryImages').value = '';
+    document.getElementById('uploadGalleryBtn').style.display = 'none';
+
     // Load gallery images
     loadProjectGallery(id);
 
