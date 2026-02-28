@@ -205,26 +205,6 @@ document.getElementById('projectForm')?.addEventListener('submit', async (e) => 
 
     if (res.ok) {
       console.log('✅ Project created! ID:', data.id);
-      
-      // If gallery images provided, upload them
-      const galleryInput = document.getElementById('projectGalleryImages');
-      if (galleryInput && galleryInput.files.length > 0) {
-        console.log('📸 Uploading', galleryInput.files.length, 'gallery images...');
-        const galleryFormData = new FormData();
-        for (let i = 0; i < galleryInput.files.length; i++) {
-          galleryFormData.append('images', galleryInput.files[i]);
-        }
-
-        const galleryResponse = await fetch(`${API_URL}/projects/${data.id}/images`, withAuth({
-          method: 'POST',
-          body: galleryFormData
-        }));
-
-        console.log('📊 Gallery upload response:', galleryResponse.status);
-        if (!galleryResponse.ok) {
-          console.warn('⚠️ Gallery images upload had issues');
-        }
-      }
 
       alert('✅ Project created successfully!');
       document.getElementById('projectForm').reset();
