@@ -523,6 +523,7 @@ main {
   position: fixed;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
   background: hsla(240, 1%, 17%, 0.75);
   backdrop-filter: blur(10px);
@@ -530,6 +531,8 @@ main {
   border-radius: 12px 12px 0 0;
   box-shadow: var(--shadow-2);
   z-index: 5;
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .navbar-list {
@@ -2489,9 +2492,9 @@ textarea.form-input::-webkit-resizer { display: none; }
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.72);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  backdrop-filter: blur(14px) saturate(140%);
+  background: rgba(0, 0, 0, 0.78);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
   cursor: pointer;
 }
 
@@ -2536,17 +2539,22 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .modal-backdrop {
-    background: rgba(0, 0, 0, 0.6);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    backdrop-filter: blur(14px) saturate(140%);
+    background: rgba(0, 0, 0, 0.36);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+    backdrop-filter: blur(22px) saturate(160%);
   }
 
   .project-modal {
-    background: hsla(240, 1%, 17%, 0.62);
-    -webkit-backdrop-filter: blur(28px) saturate(165%);
-    backdrop-filter: blur(28px) saturate(165%);
+    background: hsla(240, 1%, 17%, 0.52);
+    -webkit-backdrop-filter: blur(32px) saturate(170%);
+    backdrop-filter: blur(32px) saturate(170%);
     border: 1px solid rgba(255, 255, 255, 0.18);
   }
+}
+
+body.project-modal-open .sidebar,
+body.project-modal-open article {
+  filter: blur(10px);
 }
 
 @keyframes slideInUp {
@@ -2761,14 +2769,14 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 @supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .project-details {
-    background: hsla(240, 1%, 17%, 0.46);
+    background: hsla(240, 1%, 17%, 0.38);
     -webkit-backdrop-filter: blur(18px) saturate(145%);
     backdrop-filter: blur(18px) saturate(145%);
     border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .detail-section {
-    background: hsla(240, 1%, 17%, 0.38);
+    background: hsla(240, 1%, 17%, 0.3);
     -webkit-backdrop-filter: blur(18px) saturate(145%);
     backdrop-filter: blur(18px) saturate(145%);
     border: 1px solid rgba(255, 255, 255, 0.08);

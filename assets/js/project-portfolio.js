@@ -486,14 +486,20 @@ function showProjectGallery(project) {
   const prevOverflow = document.body.style.overflow;
   modal.dataset.prevBodyOverflow = prevOverflow;
   document.body.style.overflow = 'hidden';
+  document.body.classList.add('project-modal-open');
+
+  const closeModal = (reason) => {
+    console.log(`🚫 Closing modal (${reason})`);
+    document.body.style.overflow = modal.dataset.prevBodyOverflow || '';
+    document.body.classList.remove('project-modal-open');
+    modal.remove();
+  };
 
   // Close on backdrop click
   const backdrop = modal.querySelector('.modal-backdrop');
   if (backdrop) {
     backdrop.addEventListener('click', () => {
-      console.log('🚫 Closing modal (backdrop)');
-      document.body.style.overflow = modal.dataset.prevBodyOverflow || '';
-      modal.remove();
+      closeModal('backdrop');
     });
   }
 
@@ -501,9 +507,7 @@ function showProjectGallery(project) {
   const closeBtn = modal.querySelector('.modal-close');
   if (closeBtn) {
     closeBtn.addEventListener('click', () => {
-      console.log('🚫 Closing modal (close button)');
-      document.body.style.overflow = modal.dataset.prevBodyOverflow || '';
-      modal.remove();
+      closeModal('close button');
     });
     closeBtn.focus();
   }
