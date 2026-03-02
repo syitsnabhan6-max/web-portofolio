@@ -337,13 +337,19 @@ app.post('/api/projects/:id/images', upload.array('images', 10), async (req, res
       return res.status(404).json({ error: 'Project not found' });
     }
 
+    const maxRow = await dbGet(
+      'SELECT COALESCE(MAX(image_order), 0) AS maxOrder FROM project_images WHERE project_id = ?',
+      [projectId]
+    );
+    const baseOrder = Number.isFinite(Number(maxRow?.maxOrder)) ? Number(maxRow.maxOrder) : 0;
+
     const uploadedImages = [];
     if (req.files && req.files.length > 0) {
       for (let i = 0; i < req.files.length; i++) {
         const imageUrl = `/assets/uploads/${req.files[i].filename}`;
         await dbRun(
           'INSERT INTO project_images (project_id, image_url, image_order) VALUES (?, ?, ?)',
-          [projectId, imageUrl, i]
+          [projectId, imageUrl, baseOrder + i + 1]
         );
         uploadedImages.push(imageUrl);
       }

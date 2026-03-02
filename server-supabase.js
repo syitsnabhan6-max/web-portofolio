@@ -40,7 +40,7 @@ app.use(express.static(__dirname));
 
 const PROJECT_I18N_PATH = path.join(__dirname, 'assets', 'i18n', 'projects.json');
 const PROJECT_I18N_LANGS = ['en', 'id', 'zh', 'ja', 'fr', 'ru', 'es'];
-const STORAGE_BUCKET = process.env.SUPABASE_STORAGE_BUCKET || 'portfolio-images';
+const STORAGE_BUCKET = process.env.SUPABASE_STORAGE_BUCKET || 'portofolio-images';
 const PROJECT_I18N_OBJECT_PATH = process.env.PROJECT_I18N_OBJECT_PATH || 'meta/projects.json';
 
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
@@ -545,6 +545,20 @@ app.post('/api/projects/:id/images', requireAdmin, upload.array('images', 10), a
       return res.status(404).json({ error: 'Project not found' });
     }
 
+    let baseOrder = 0;
+    try {
+      const { data: lastRows } = await supabaseAdmin
+        .from('project_images')
+        .select('image_order')
+        .eq('project_id', projectId)
+        .order('image_order', { ascending: false })
+        .limit(1);
+      const last = lastRows && lastRows[0] ? lastRows[0].image_order : 0;
+      baseOrder = Number.isFinite(Number(last)) ? Number(last) : 0;
+    } catch {
+      baseOrder = 0;
+    }
+
     const uploadedImages = [];
     if (req.files && req.files.length > 0) {
       for (let i = 0; i < req.files.length; i++) {
@@ -555,7 +569,7 @@ app.post('/api/projects/:id/images', requireAdmin, upload.array('images', 10), a
           .insert({
             project_id: projectId,
             image_url: imgUrl,
-            image_order: i
+            image_order: baseOrder + i + 1
           });
 
         uploadedImages.push(imgUrl);

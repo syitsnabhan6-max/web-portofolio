@@ -208,6 +208,8 @@ document.getElementById('projectForm')?.addEventListener('submit', async (e) => 
 
       alert('✅ Project created successfully!');
       document.getElementById('projectForm').reset();
+      const preview = document.getElementById('imagePreviewContainer');
+      if (preview) preview.innerHTML = '';
       loadProjects();
       switchTab('projects');
     } else {
@@ -219,6 +221,11 @@ document.getElementById('projectForm')?.addEventListener('submit', async (e) => 
     console.error('❌ Connection error:', err);
     alert('❌ Connection error: ' + err.message);
   }
+});
+
+document.getElementById('projectForm')?.addEventListener('reset', () => {
+  const preview = document.getElementById('imagePreviewContainer');
+  if (preview) preview.innerHTML = '';
 });
 
 // ==================== EDIT PROJECT ====================
@@ -595,13 +602,16 @@ document.getElementById('categoryForm')?.addEventListener('submit', async (e) =>
 // ==================== GALLERY MANAGEMENT ==================== 
 
 // Setup drag-drop for file inputs
-function setupDragDrop(dropZoneId, fileInputId, previewContainerId) {
+function setupDragDrop(dropZoneId, fileInputId, previewContainerId, options = {}) {
   const dropZone = document.getElementById(dropZoneId);
   const fileInput = document.getElementById(fileInputId);
   
   if (!dropZone || !fileInput) return;
   if (dropZone.dataset.dragDropBound === 'true') return;
   dropZone.dataset.dragDropBound = 'true';
+
+  const maxFiles = Number.isFinite(options.maxFiles) ? options.maxFiles : 5;
+  const showUploadButton = options.showUploadButton === true || fileInputId === 'editProjectGalleryImages';
 
   // Click to browse
   dropZone.addEventListener('click', () => fileInput.click());
@@ -620,34 +630,44 @@ function setupDragDrop(dropZoneId, fileInputId, previewContainerId) {
     e.preventDefault();
     dropZone.classList.remove('drag-over');
     
-    const files = e.dataTransfer.files;
-    fileInput.files = files;
-    
-    // Show preview
-    showImagePreview(fileInput, previewContainerId);
+    const files = Array.from(e.dataTransfer.files || []).filter((f) => f && typeof f.type === 'string' && f.type.startsWith('image/'));
+    const dt = new DataTransfer();
+    files.slice(0, maxFiles).forEach((f) => dt.items.add(f));
+    fileInput.files = dt.files;
+    showImagePreview(fileInput, previewContainerId, { maxFiles, showUploadButton });
   });
 
   // File input change
   fileInput.addEventListener('change', () => {
-    showImagePreview(fileInput, previewContainerId);
+    showImagePreview(fileInput, previewContainerId, { maxFiles, showUploadButton });
   });
 }
 
 // Show preview of selected images
-function showImagePreview(fileInput, previewContainerId) {
+function showImagePreview(fileInput, previewContainerId, options = {}) {
   const previewContainer = document.getElementById(previewContainerId);
   if (!previewContainer) return;
 
+  const maxFiles = Number.isFinite(options.maxFiles) ? options.maxFiles : 5;
+  const showUploadButton = options.showUploadButton === true;
+  const rawFiles = Array.from(fileInput.files || []);
+  const normalized = rawFiles.slice(0, maxFiles);
+  if (rawFiles.length !== normalized.length) {
+    const dt = new DataTransfer();
+    normalized.forEach((f) => dt.items.add(f));
+    fileInput.files = dt.files;
+  }
+
   previewContainer.innerHTML = '';
-  const files = fileInput.files;
+  const files = Array.from(fileInput.files || []);
 
   // Show upload button if there are files (for edit form only)
-  const uploadBtn = document.getElementById('uploadGalleryBtn');
+  const uploadBtn = showUploadButton ? document.getElementById('uploadGalleryBtn') : null;
   if (uploadBtn) {
     uploadBtn.style.display = files.length > 0 ? 'block' : 'none';
   }
 
-  Array.from(files).slice(0, 5).forEach((file, index) => {
+  files.forEach((file, index) => {
     const reader = new FileReader();
     
     reader.onload = (e) => {
@@ -663,15 +683,10 @@ function showImagePreview(fileInput, previewContainerId) {
       const removeBtn = item.querySelector('.image-preview-remove');
       removeBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        // Remove from preview
-        item.remove();
-        // Update file input (remove file at index)
-        removeFileAtIndex(fileInput, index);
-        
-        // Update button visibility
-        if (uploadBtn && fileInput.files.length === 0) {
-          uploadBtn.style.display = 'none';
-        }
+        const idx = Number(removeBtn.dataset.index);
+        if (!Number.isFinite(idx)) return;
+        removeFileAtIndex(fileInput, idx);
+        showImagePreview(fileInput, previewContainerId, options);
       });
 
       previewContainer.appendChild(item);
@@ -759,11 +774,22 @@ async function uploadAdditionalGalleryImages(projectId) {
   }
 
   try {
-    showStatusMessage(`Uploading ${fileInput.files.length} image(s)...`, 'loading');
+    const files = Array.from(fileInput.files || []).slice(0, 5);
+    if (files.length === 0) {
+      showStatusMessage('No images selected', 'error');
+      return;
+    }
+    if (files.length !== fileInput.files.length) {
+      const dt = new DataTransfer();
+      files.forEach((f) => dt.items.add(f));
+      fileInput.files = dt.files;
+    }
+
+    showStatusMessage(`Uploading ${files.length} image(s)...`, 'loading');
     
     const formData = new FormData();
-    for (let i = 0; i < fileInput.files.length; i++) {
-      formData.append('images', fileInput.files[i]);
+    for (let i = 0; i < files.length; i++) {
+      formData.append('images', files[i]);
     }
 
     const { res, data } = await fetchJson(`${API_URL}/projects/${projectId}/images`, withAuth({

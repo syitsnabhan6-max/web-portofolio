@@ -483,11 +483,16 @@ function showProjectGallery(project) {
   document.body.appendChild(modal);
   console.log('✅ Modal appended to DOM');
 
+  const prevOverflow = document.body.style.overflow;
+  modal.dataset.prevBodyOverflow = prevOverflow;
+  document.body.style.overflow = 'hidden';
+
   // Close on backdrop click
   const backdrop = modal.querySelector('.modal-backdrop');
   if (backdrop) {
     backdrop.addEventListener('click', () => {
       console.log('🚫 Closing modal (backdrop)');
+      document.body.style.overflow = modal.dataset.prevBodyOverflow || '';
       modal.remove();
     });
   }
@@ -497,8 +502,10 @@ function showProjectGallery(project) {
   if (closeBtn) {
     closeBtn.addEventListener('click', () => {
       console.log('🚫 Closing modal (close button)');
+      document.body.style.overflow = modal.dataset.prevBodyOverflow || '';
       modal.remove();
     });
+    closeBtn.focus();
   }
 
   // Setup gallery navigation

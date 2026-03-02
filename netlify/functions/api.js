@@ -465,6 +465,20 @@ router.post('/projects/:id/images', requireAdmin, upload.array('images', 10), as
       .single();
     if (projectError || !project) return res.status(404).json({ error: 'Project not found' });
 
+    let baseOrder = 0;
+    try {
+      const { data: lastRows } = await supabaseAdmin
+        .from('project_images')
+        .select('image_order')
+        .eq('project_id', projectId)
+        .order('image_order', { ascending: false })
+        .limit(1);
+      const last = lastRows && lastRows[0] ? lastRows[0].image_order : 0;
+      baseOrder = Number.isFinite(Number(last)) ? Number(last) : 0;
+    } catch {
+      baseOrder = 0;
+    }
+
     const uploadedImages = [];
     const files = req.files || [];
     for (let i = 0; i < files.length; i++) {
@@ -476,7 +490,7 @@ router.post('/projects/:id/images', requireAdmin, upload.array('images', 10), as
         .insert({
           project_id: projectId,
           image_url: imgUrl,
-          image_order: i
+          image_order: baseOrder + i + 1
         });
       uploadedImages.push(imgUrl);
     }
