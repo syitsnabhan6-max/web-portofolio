@@ -24,7 +24,7 @@ async function fetchJson(url, options) {
     logout();
     throw new Error('Unauthorized');
   }
-  return { res, data };
+  return { res, data, text };
 }
 
 // ==================== LOGIN ====================
@@ -181,6 +181,15 @@ document.getElementById('projectForm')?.addEventListener('submit', async (e) => 
 
   saveProjectI18nCurrentLang('');
   const formData = new FormData(document.getElementById('projectForm'));
+  const mainFile = document.getElementById('projectImage')?.files?.[0] || null;
+  const galleryFiles = Array.from(document.getElementById('projectGalleryImages')?.files || []);
+  const allFiles = [mainFile, ...galleryFiles].filter(Boolean);
+  const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+  const tooLarge = allFiles.find((f) => f && typeof f.size === 'number' && f.size > MAX_IMAGE_BYTES);
+  if (tooLarge) {
+    alert(`❌ Image too large: ${tooLarge.name}. Max 5MB per image.`);
+    return;
+  }
   
   // Log what we're sending
   console.log('📤 Submitting project form...');
@@ -195,7 +204,7 @@ document.getElementById('projectForm')?.addEventListener('submit', async (e) => 
   try {
     // Create project first
     console.log(`🚀 POST to ${API_URL}/projects`);
-    const { res, data } = await fetchJson(`${API_URL}/projects`, withAuth({
+    const { res, data, text } = await fetchJson(`${API_URL}/projects`, withAuth({
       method: 'POST',
       body: formData
     }));
@@ -204,6 +213,9 @@ document.getElementById('projectForm')?.addEventListener('submit', async (e) => 
     console.log('📨 Response data:', data);
 
     if (res.ok) {
+      if (!data || typeof data !== 'object') {
+        throw new Error(text || `Unexpected response (HTTP ${res.status})`);
+      }
       console.log('✅ Project created! ID:', data.id);
 
       alert('✅ Project created successfully!');
@@ -213,13 +225,14 @@ document.getElementById('projectForm')?.addEventListener('submit', async (e) => 
       loadProjects();
       switchTab('projects');
     } else {
-      const errorMsg = data.error || 'Failed to create project';
+      const errorMsg = (data && typeof data === 'object' && data.error) ? data.error : (text || `Failed to create project (HTTP ${res.status})`);
       console.error('❌ Error:', errorMsg);
       alert('❌ Error: ' + errorMsg);
     }
   } catch (err) {
     console.error('❌ Connection error:', err);
-    alert('❌ Connection error: ' + err.message);
+    const msg = (err && err.message) ? err.message : String(err);
+    alert('❌ Connection error: ' + msg);
   }
 });
 
@@ -785,6 +798,13 @@ async function uploadAdditionalGalleryImages(projectId) {
       fileInput.files = dt.files;
     }
 
+    const MAX_IMAGE_BYTES = 5 * 1024 * 1024;
+    const tooLarge = files.find((f) => f && typeof f.size === 'number' && f.size > MAX_IMAGE_BYTES);
+    if (tooLarge) {
+      showStatusMessage(`Image too large: ${tooLarge.name} (max 5MB)`, 'error');
+      return;
+    }
+
     showStatusMessage(`Uploading ${files.length} image(s)...`, 'loading');
     
     const formData = new FormData();
@@ -792,7 +812,7 @@ async function uploadAdditionalGalleryImages(projectId) {
       formData.append('images', files[i]);
     }
 
-    const { res, data } = await fetchJson(`${API_URL}/projects/${projectId}/images`, withAuth({
+    const { res, data, text } = await fetchJson(`${API_URL}/projects/${projectId}/images`, withAuth({
       method: 'POST',
       body: formData
     }));
@@ -804,11 +824,13 @@ async function uploadAdditionalGalleryImages(projectId) {
       document.getElementById('uploadGalleryBtn').style.display = 'none';
       loadProjectGallery(projectId);
     } else {
-      showStatusMessage(data.error || 'Upload failed', 'error');
+      const errorMsg = (data && typeof data === 'object' && data.error) ? data.error : (text || `Upload failed (HTTP ${res.status})`);
+      showStatusMessage(errorMsg, 'error');
     }
   } catch (err) {
     console.error('Error uploading images:', err);
-    showStatusMessage('Connection error', 'error');
+    const msg = (err && err.message) ? err.message : String(err);
+    showStatusMessage(msg || 'Connection error', 'error');
   }
 }
 

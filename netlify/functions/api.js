@@ -517,4 +517,18 @@ router.delete('/projects/:projectId/images/:imageId', requireAdmin, async (req, 
 app.use('/', router);
 app.use('/api', router);
 
+app.use((err, req, res, next) => {
+  if (!err) return next();
+  if (err instanceof multer.MulterError) {
+    if (err.code === 'LIMIT_FILE_SIZE') {
+      return res.status(413).json({ error: 'Image too large (max 5MB per file)' });
+    }
+    return res.status(400).json({ error: err.message || 'Upload error' });
+  }
+  if (err instanceof SyntaxError && 'body' in err) {
+    return res.status(400).json({ error: 'Invalid JSON body' });
+  }
+  return res.status(500).json({ error: err.message || 'Server error' });
+});
+
 export const handler = serverless(app);
