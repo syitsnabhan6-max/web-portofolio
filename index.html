@@ -28,8 +28,8 @@
   
   <!-- Redirect ke splash screen -->
   <script>
-    // Check if already shown splash (use sessionStorage)
-    if (!sessionStorage.getItem('splashShown')) {
+    // Check if already shown splash (use sessionStorage) - Don't redirect bots
+    if (sessionStorage && !sessionStorage.getItem('splashShown') && !/bot|crawler|spider|crawling/i.test(navigator.userAgent)) {
       sessionStorage.setItem('splashShown', 'true');
       window.location.href = './splash.html';
     }
